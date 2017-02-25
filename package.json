@@ -1,0 +1,44 @@
+{
+  "name": "clock-collection",
+  "version": "1.0.0",
+  "description": "Joel's collection of stupid clocks.",
+  "main": "gulpfile.js",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-load-plugins": "^1.1.0",
+    "gulp-sass": "^2.1.0",
+    "babel-preset-es2015": "^6.16.0"
+  },
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp sass",
+    "dev": "webpack -d --watch",
+    "jsbuild": "webpack -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kalior/clocks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kalior/clocks/issues",
+    "email": "me@joelgustafsson.com"
+  },
+  "author": "Joel Gustafsson <me@joelgustafsson.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "babelify": "^7.3.0",
+    "foundation-sites": "^6.3.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-react": "^3.1.0",
+    "motion-ui": "^1.2.2",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "webpack": "^1.13.2"
+  }
+}
