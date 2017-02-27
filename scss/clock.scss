@@ -1,0 +1,38 @@
+.digital-clock {
+  font-size: 3em;
+  font-weight: 200;
+  letter-spacing: -1px;
+}
+
+.clock-name {
+  font-size: 2em;
+  font-weight: 200;
+  letter-spacing: -1px;
+}
+
+.all-clocks {
+  .clock-description {
+    display:none;
+  }
+  .clock-wrapper {
+    border: 1px solid black;
+    border-radius: 15px 15px;
+  }
+}
+
+.top-clock {
+  .clock-wrapper {
+    display: flex;
+    // align-content: center;
+    flex-direction: column;
+  }
+  .clock-attribute {
+    align-self: center;
+  }
+  .clock-description {
+    text-align: center;
+  }
+  .clock-name {
+    text-align: center;
+  }
+}
