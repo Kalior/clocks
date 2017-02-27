@@ -50,7 +50,7 @@ export default class RandomClock extends React.Component {
     //   ", technically, mean that it is a clock that sometimes tells time, stochastically. Add prediction about how often it is correct..."
     return(
       <div className="random-clock clock">
-        <DigitalClock time={randTime} name={"Random Clock"} description={description}/>
+        <DigitalClock time={randTime} name={"Scrambled Clock"} description={description}/>
       </div>
     );
   }
