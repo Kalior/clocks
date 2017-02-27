@@ -37,7 +37,17 @@ class MainView extends React.Component {
   }
   render() {
     return (
-      <div className="MainView row" id="content">
+      <div className="main-view row" id="content">
+        <div className="top-clock row">
+          <div className="large-10 columns">
+            <RandomClock currentHour={this.state.currentHour} currentMinute={this.state.currentMinute} currentSecond={this.state.currentSecond}/>
+          </div>
+        </div>
+        <div className="all-clocks row">
+          <div className="large-3 columns">
+            <RandomClock currentHour={this.state.currentHour} currentMinute={this.state.currentMinute} currentSecond={this.state.currentSecond}/>
+          </div>
+        </div>
       </div>
     );
   }
