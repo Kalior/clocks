@@ -38101,7 +38101,6 @@
 	      var sat = this.state.currentMinute + 20;
 	      var light = this.state.currentSecond + 20;
 	      var color = "hsl(" + hue + "," + sat + "%," + light + "%)";
-	      console.log(color);
 	      // Fill with gradient
 	      var centerX = canvas.width / 2;
 	      var centerY = canvas.height / 2;
