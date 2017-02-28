@@ -61,6 +61,9 @@ class MainView extends React.Component {
             <HSLClock currentHour={this.state.currentHour} currentMinute={this.state.currentMinute} currentSecond={this.state.currentSecond}/>
           </div>
           <div className="large-3 columns">
+            <BarClock currentHour={this.state.currentHour} currentMinute={this.state.currentMinute} currentSecond={this.state.currentSecond}/>
+          </div>
+          <div className="large-3 columns">
           </div>
         </div>
       </div>
