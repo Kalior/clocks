@@ -3,5 +3,3 @@ bower_components
 node_modules
 npm-debug.log
 css
-js/bundle.js
-js/bundle.js.map
