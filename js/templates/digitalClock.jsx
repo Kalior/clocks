@@ -11,6 +11,7 @@ export default class DigitalClock extends React.Component {
           {this.props.time}
         </div>
         <div className="clock-description clock-attribute">
+          <hr></hr>
           {this.props.description}
         </div>
       </div>

@@ -40,7 +40,7 @@ class MainView extends React.Component {
     return (
       <div className="main-view row" id="content">
         <div className="top-clock row">
-          <div className="large-10 columns">
+          <div className="large-offset-1 large-10 columns">
             <RandomClock currentHour={this.state.currentHour} currentMinute={this.state.currentMinute} currentSecond={this.state.currentSecond}/>
           </div>
         </div>
