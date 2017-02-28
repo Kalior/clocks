@@ -33,7 +33,7 @@ class MainView extends React.Component {
     this.setState({currentSecond: nextSeconds, currentMinute: nextMinute, currentHour: nextHour});
   }
   componentDidMount() {
-    this.setState({timer: setInterval(this.countTime, 100)});
+    this.setState({timer: setInterval(this.countTime, 1000)});
   }
   componentWillUnmount() {
     clearInterval(this.state.timer);

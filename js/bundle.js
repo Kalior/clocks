@@ -121,7 +121,7 @@
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      this.setState({ timer: setInterval(this.countTime, 100) });
+	      this.setState({ timer: setInterval(this.countTime, 1000) });
 	    }
 	  }, {
 	    key: 'componentWillUnmount',
