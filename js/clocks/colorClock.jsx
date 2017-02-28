@@ -46,7 +46,7 @@ export default class ColorClock extends React.Component {
           {name}
         </div>
         <div className="clock-attribute">
-          <canvas id="color-clock-canvas" width={200} height={200}/>
+          <canvas id="color-clock-canvas" className="clock-canvas" width={200} height={200}/>
         </div>
         <div className="clock-description clock-attribute">
           {description}
