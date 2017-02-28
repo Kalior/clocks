@@ -16,7 +16,7 @@ class MainView extends React.Component {
   countTime() {
     var nextSeconds = this.state.currentSecond + 1;
     var nextMinute = this.state.currentMinute;
-    var nextHour = this.state.nextHour;
+    var nextHour = this.state.currentHour;
     if (nextSeconds >= 60) {
       nextSeconds = 0;
       nextMinute++;
