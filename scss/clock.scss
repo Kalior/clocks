@@ -23,8 +23,9 @@
     padding-left: 1em;
     padding-right: 1em;
 
-    .clock-canvas {
+    .color-clock {
       width: 65.5px;
+      height: 65.5px;
     }
   }
 }
@@ -35,8 +36,12 @@
     // align-content: center;
     flex-direction: column;
 
-    .clock-canvas {
+    .color-clock {
       width: 200px;
+      height: 200px;
+    }
+    .bar-clock {
+      height: 200px;
     }
   }
   .clock-attribute {
@@ -65,4 +70,8 @@
   box-shadow: 0 1px 4px rgba(0,0,0,.2);
   margin: 0px;
   display: inline-block;
+}
+
+.color-clock {
+  border-radius: 50px;
 }
