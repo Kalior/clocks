@@ -1,6 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import RandomClock from './clocks/randomClock.jsx'
+import ColorClock from './clocks/colorClock.jsx'
 var moment = require('moment');
 
 class MainView extends React.Component {
@@ -15,7 +16,7 @@ class MainView extends React.Component {
   countTime() {
     var nextSeconds = this.state.currentSecond + 1;
     var nextMinute = this.state.currentMinute;
-    var nextHour = this.state.nextHour;
+    var nextHour = this.state.currentHour;
     if (nextSeconds >= 60) {
       nextSeconds = 0;
       nextMinute++;
@@ -39,13 +40,16 @@ class MainView extends React.Component {
     return (
       <div className="main-view row" id="content">
         <div className="top-clock row">
-          <div className="large-10 columns">
+          <div className="large-offset-1 large-10 columns">
             <RandomClock currentHour={this.state.currentHour} currentMinute={this.state.currentMinute} currentSecond={this.state.currentSecond}/>
           </div>
         </div>
         <div className="all-clocks row">
           <div className="large-3 columns">
             <RandomClock currentHour={this.state.currentHour} currentMinute={this.state.currentMinute} currentSecond={this.state.currentSecond}/>
+          </div>
+          <div className="large-3 columns">
+            <ColorClock currentHour={this.state.currentHour} currentMinute={this.state.currentMinute} currentSecond={this.state.currentSecond}/>
           </div>
         </div>
       </div>
