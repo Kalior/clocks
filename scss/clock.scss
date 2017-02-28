@@ -22,7 +22,7 @@
     padding: 5px;
     padding-left: 1em;
 
-    #color-clock-canvas {
+    .clock-canvas {
       width: 65.5px;
     }
   }
@@ -34,7 +34,7 @@
     // align-content: center;
     flex-direction: column;
 
-    #color-clock-canvas {
+    .clock-canvas {
       width: 200px;
     }
   }

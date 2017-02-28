@@ -3,6 +3,7 @@ import {render} from 'react-dom';
 import RandomClock from './clocks/randomClock.jsx'
 import ColorClock from './clocks/colorClock.jsx'
 import WrongOrderClock from './clocks/wrongOrder.jsx'
+import HSLClock from './clocks/hslClock.jsx'
 var moment = require('moment');
 
 class MainView extends React.Component {
@@ -54,6 +55,9 @@ class MainView extends React.Component {
           </div>
           <div className="large-3 columns">
             <WrongOrderClock currentHour={this.state.currentHour} currentMinute={this.state.currentMinute} currentSecond={this.state.currentSecond}/>
+          </div>
+          <div className="large-3 columns">
+            <HSLClock currentHour={this.state.currentHour} currentMinute={this.state.currentMinute} currentSecond={this.state.currentSecond}/>
           </div>
           <div className="large-3 columns">
           </div>
