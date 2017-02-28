@@ -26,10 +26,10 @@ export default class ColorClock extends React.Component {
     // Fill with gradient
     var centerX = canvas.width / 2;
     var centerY = canvas.height / 2;
-    var radius = 35;
+    var radius = 100;
 
     context.beginPath();
-    var grd = context.createRadialGradient(centerX, centerY, 20, centerX, centerY, radius);
+    var grd = context.createRadialGradient(centerX, centerY, 50, centerX, centerY, radius);
     grd.addColorStop(0, color);
     grd.addColorStop(1, "white");
     context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
@@ -46,7 +46,7 @@ export default class ColorClock extends React.Component {
           {name}
         </div>
         <div className="clock-attribute">
-          <canvas id="color-clock-canvas" width={75} height={75}/>
+          <canvas id="color-clock-canvas" width={200} height={200}/>
         </div>
         <div className="clock-description clock-attribute">
           {description}

@@ -21,6 +21,10 @@
     margin-bottom: 1em;
     padding: 5px;
     padding-left: 1em;
+
+    #color-clock-canvas {
+      width: 65.5px;
+    }
   }
 }
 
@@ -29,6 +33,10 @@
     display: flex;
     // align-content: center;
     flex-direction: column;
+
+    #color-clock-canvas {
+      width: 200px;
+    }
   }
   .clock-attribute {
     align-self: center;
