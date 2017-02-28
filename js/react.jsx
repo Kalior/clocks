@@ -1,9 +1,10 @@
 import React from 'react';
 import {render} from 'react-dom';
-import RandomClock from './clocks/randomClock.jsx'
-import ColorClock from './clocks/colorClock.jsx'
-import WrongOrderClock from './clocks/wrongOrder.jsx'
-import HSLClock from './clocks/hslClock.jsx'
+import RandomClock from './clocks/randomClock.jsx';
+import ColorClock from './clocks/colorClock.jsx';
+import WrongOrderClock from './clocks/wrongOrder.jsx';
+import HSLClock from './clocks/hslClock.jsx';
+import BarClock from './clocks/barClock.jsx';
 var moment = require('moment');
 
 class MainView extends React.Component {
