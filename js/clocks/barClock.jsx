@@ -21,11 +21,11 @@ export default class BarClock extends React.Component {
       "have been more than 30 minutes since the hour last struck."
     var name = "Bar Clock";
     return(
-      <div className="color-clock clock clock-wrapper">
+      <div className="clock-wrapper">
         <div className="clock-name clock-attribute">
           {name}
         </div>
-        <div className="clock-attribute">
+        <div className="bar-clock-attribute">
           {hourDiv}{minuteDiv}{secondDiv}
         </div>
         <div className="clock-description clock-attribute">
