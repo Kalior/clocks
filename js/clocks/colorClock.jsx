@@ -13,7 +13,7 @@ export default class ColorClock extends React.Component {
 
     var clockStyle = {
       background: color,
-      background: "radial-gradient(circle, " + color + "40%, rgba(255,255,255,1) 60%)"
+      background: "radial-gradient(circle, " + color + "40%, rgba(255,255,255,0) 60%)"
     };
 
     var description = "This clock displays the current time as an RGB value where red is the hour, green is the minute and blue is the second. " +

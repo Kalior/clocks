@@ -13,7 +13,7 @@ export default class HSLClock extends React.Component {
 
     var clockStyle = {
       background: color,
-      background: "radial-gradient(circle, " + color + "40%, rgba(255,255,255,1) 60%)"
+      background: "radial-gradient(circle, " + color + "40%, rgba(255,255,255,0) 60%)"
     };
 
     var description = "This clock displays the current time as an HSL value in a simliar fashion to the RGB Clock. " +
