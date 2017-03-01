@@ -42,16 +42,20 @@
     display: flex;
     // align-content: center;
     flex-direction: column;
+    min-height: 336px;
 
     .color-clock {
-      width: 150px;
-      height: 150px;
+      width: 144px;
+      height: 144px;
     }
     .bar-clock {
-      height: 150px;
+      height: 100%;
+    }
+    .bar-clock-attribute {
+      height: 144px;
     }
     .digital-clock {
-      font-size: 5em;
+      font-size: 6em;
       font-weight: 200;
       letter-spacing: -1px;
     }

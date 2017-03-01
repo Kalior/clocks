@@ -29,6 +29,7 @@ export default class BarClock extends React.Component {
           {hourDiv}{minuteDiv}{secondDiv}
         </div>
         <div className="clock-description clock-attribute">
+          <hr></hr>
           {description}
         </div>
       </div>
