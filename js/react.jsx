@@ -65,7 +65,7 @@ class MainView extends React.Component {
     var numberOfClocks = this.state.clockTypes.length - 1;
     for (var i = 0; i < numberOfClocks; i++) {
       clocksWithRow.push(
-        <div className="large-3 small-6 columns click-clock" key={i} onClick={this.updateTopClockIndex.bind(this, i)}>
+        <div className="large-3 medium-6 small-12 columns click-clock" key={i} onClick={this.updateTopClockIndex.bind(this, i)}>
           {React.createElement(this.state.clockTypes[i], {currentHour: this.state.currentHour, currentMinute: this.state.currentMinute,
             currentSecond: this.state.currentSecond, currentMillisecond: this.state.currentMillisecond})}
         </div>
@@ -73,7 +73,7 @@ class MainView extends React.Component {
     }
     // Extra for the last item as we want an added class on that one.
     clocksWithRow.push(
-        <div className="large-3 small-6 columns end click-clock" key={numberOfClocks} onClick={this.updateTopClockIndex.bind(this, numberOfClocks)}>
+        <div className="large-3 medium-6 small-12 columns end click-clock" key={numberOfClocks} onClick={this.updateTopClockIndex.bind(this, numberOfClocks)}>
           {React.createElement(this.state.clockTypes[i], {currentHour: this.state.currentHour, currentMinute: this.state.currentMinute,
             currentSecond: this.state.currentSecond, currentMillisecond: this.state.currentMillisecond})}
         </div>
