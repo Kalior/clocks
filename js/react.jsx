@@ -44,7 +44,7 @@ class MainView extends React.Component {
   componentDidMount() {
     var seed = this.state.currentMinute;
     var rand = require('random-seed').create(seed);
-    var index = rand.intBetween(0, this.state.clockTypes.length);
+    var index = rand.intBetween(0, this.state.clockTypes.length-1);
     this.setState({timer: setInterval(this.countTime, 100), topClockIndex: index});
   }
   componentWillUnmount() {
