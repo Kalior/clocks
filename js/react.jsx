@@ -6,6 +6,7 @@ import WrongOrderClock from './clocks/wrongOrder.jsx';
 import HSLClock from './clocks/hslClock.jsx';
 import BarClock from './clocks/barClock.jsx';
 import MetricClock from './clocks/metricClock.jsx';
+import LocationClock from './clocks/locationClock.jsx';
 var moment = require('moment');
 
 class MainView extends React.Component {
@@ -17,7 +18,7 @@ class MainView extends React.Component {
     var millisecond = parseInt(moment().format('SSS'));
 
     var clockTypes = [
-      RandomClock, ColorClock, BarClock, WrongOrderClock, HSLClock, MetricClock
+      RandomClock, ColorClock, BarClock, WrongOrderClock, HSLClock, MetricClock, LocationClock
     ];
 
     this.state = {currentHour: currentHour, currentMinute: currentMinute, currentSecond: second, currentMillisecond: millisecond,
