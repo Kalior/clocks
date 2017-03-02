@@ -1,0 +1,21 @@
+{
+  "name": "clock-collection",
+  "description": "Joel's collection of stupid clocks.",
+  "main": "gulpfile.js",
+  "authors": [
+    "Joel Gustafsson <me@joelgustafsson.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Kalior/clocks",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "simpleWeather": "^3.1.0"
+  }
+}

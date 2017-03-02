@@ -18,6 +18,9 @@ var config = {
         loader : 'babel'
       }
     ]
+  },
+  resolve: {
+    modulesDirectories: ["node_modules", "bower_components"]
   }
 };
 
