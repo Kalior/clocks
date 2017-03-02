@@ -68,7 +68,7 @@ class MainView extends React.Component {
       clocksWithRow.push(
         <div className="large-3 medium-6 small-12 columns click-clock" key={i} onClick={this.updateTopClockIndex.bind(this, i)}>
           {React.createElement(this.state.clockTypes[i], {currentHour: this.state.currentHour, currentMinute: this.state.currentMinute,
-            currentSecond: this.state.currentSecond, currentMillisecond: this.state.currentMillisecond})}
+            currentSecond: this.state.currentSecond, currentMillisecond: this.state.currentMillisecond, isTop: false})}
         </div>
       );
     }
@@ -76,7 +76,7 @@ class MainView extends React.Component {
     clocksWithRow.push(
         <div className="large-3 medium-6 small-12 columns end click-clock" key={numberOfClocks} onClick={this.updateTopClockIndex.bind(this, numberOfClocks)}>
           {React.createElement(this.state.clockTypes[i], {currentHour: this.state.currentHour, currentMinute: this.state.currentMinute,
-            currentSecond: this.state.currentSecond, currentMillisecond: this.state.currentMillisecond})}
+            currentSecond: this.state.currentSecond, currentMillisecond: this.state.currentMillisecond, isTop: false})}
         </div>
       );
     return (
@@ -84,7 +84,7 @@ class MainView extends React.Component {
         <div className="top-clock row">
           <div className="large-offset-1 large-10 columns">
             {React.createElement(this.state.clockTypes[this.state.topClockIndex], {currentHour: this.state.currentHour, currentMinute: this.state.currentMinute,
-              currentSecond: this.state.currentSecond, currentMillisecond: this.state.currentMillisecond})}
+              currentSecond: this.state.currentSecond, currentMillisecond: this.state.currentMillisecond, isTop: true})}
           </div>
         </div>
         <div className="all-clocks row">
