@@ -26,7 +26,7 @@
       width: 65.5px;
       height: 65.5px;
     }
-    .bar-clock {
+    .bar-clock, .speed-clock {
       height: 65.5px;
     }
     .digital-clock {
@@ -51,7 +51,7 @@
     .bar-clock {
       height: 100%;
     }
-    .bar-clock-attribute {
+    .bar-clock-attribute, .speed-clock {
       height: 144px;
     }
     .digital-clock {
@@ -80,7 +80,7 @@
   box-shadow: 0 1px 4px rgba(0,0,0,.2);
 }
 
-.bar-clock {
+.bar-clock, .speed-clock {
   border-radius: 5px;
   box-shadow: 0 1px 4px rgba(0,0,0,.2);
   margin: 0px;
