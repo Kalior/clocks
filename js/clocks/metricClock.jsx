@@ -14,20 +14,11 @@ export default class MetricClock extends React.Component {
     var metricSeconds = Math.floor((totalMetricSeconds / 1000) % 100);
 
     var metricHourText = metricHours, metricMinuteText = metricMinutes, metricSecondText = metricSeconds;
-    if (metricSecondText < 100) {
-      metricSecondText = "0" + metricSecondText;
-    }
     if (metricSecondText < 10) {
       metricSecondText = "0" + metricSecondText;
     }
-    if (metricMinuteText < 100) {
-      metricMinuteText = "0" + metricMinuteText;
-    }
     if (metricMinuteText < 10) {
       metricMinuteText = "0" + metricMinuteText;
-    }
-    if (metricHourText < 100) {
-      metricHourText = "0" + metricHourText;
     }
     if (metricHourText < 10) {
       metricHourText = "0" + metricHourText;
