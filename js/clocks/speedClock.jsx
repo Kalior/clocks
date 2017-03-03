@@ -29,9 +29,9 @@ export default class SpeedClock extends React.Component {
     var objectWidth = canvas.width / 5;
     var objectMargin = (canvas.height - (objectHeight * 3)) / 2;
 
-    var hourSpeed = this.state.currentHour / 10 + 1;
-    var minuteSpeed = this.state.currentMinute / 10 + 1;
-    var secondSpeed = this.state.currentSecond / 10 + 1;
+    var hourSpeed = this.state.currentHour / 10 + 0.1;
+    var minuteSpeed = this.state.currentMinute / 10 + 0.1;
+    var secondSpeed = this.state.currentSecond / 10 + 0.1;
     var hourX = (hourSpeed + this.state.prevHourX) % (canvas.width + objectWidth);
     var minuteX = (minuteSpeed + this.state.prevMinuteX) % (canvas.width + objectWidth);
     var secondX = (secondSpeed + this.state.prevSecondX) % (canvas.width + objectWidth);
