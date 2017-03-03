@@ -1,7 +1,7 @@
 import React from 'react';
 import DigitalClock from '../templates/digitalClock.jsx'
 
-export default class RandomClock extends React.Component {
+export default class ScrambledClock extends React.Component {
   constructor(props) {
     super(props);
     this.randomTime = this.randomTime.bind(this);
