@@ -1,5 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
+import IdleTimer from 'react-idle-timer';
 import RandomClock from './clocks/randomClock.jsx';
 import ColorClock from './clocks/colorClock.jsx';
 import WrongOrderClock from './clocks/wrongOrder.jsx';
@@ -23,10 +24,12 @@ class MainView extends React.Component {
     ];
 
     this.state = {currentHour: currentHour, currentMinute: currentMinute, currentSecond: second, currentMillisecond: millisecond,
-      timer: null, topClockIndex: 0, clockTypes: clockTypes};
+      timer: null, topClockIndex: 0, clockTypes: clockTypes, idle: false, timeout: 50000};
 
     this.countTime = this.countTime.bind(this);
     this.updateTopClockIndex = this.updateTopClockIndex.bind(this);
+    this.onActive = this.onActive.bind(this);
+    this.onIdle = this.onIdle.bind(this);
   }
   countTime() {
     var nextMillisecond = this.state.currentMillisecond + 10;
@@ -62,6 +65,29 @@ class MainView extends React.Component {
   updateTopClockIndex(i) {
     this.setState({topClockIndex: i});
   }
+  onActive() {
+    if (this.state.idle) {
+      console.log('active');
+      let currentHour = parseInt(moment().format('HH'));
+      let currentMinute = parseInt(moment().format('mm'));
+      let second = parseInt(moment().format('ss'));
+      let millisecond = parseInt(moment().format('SSS'));
+
+      this.setState({
+        currentHour: currentHour,
+        currentMinute: currentMinute,
+        currentSecond: second,
+        currentMillisecond: millisecond,
+        idle: false
+      });
+    }
+  }
+  onIdle() {
+    if (!this.state.idle) {
+      console.log('idle');
+      this.setState({idle: true});
+    }
+  }
   render() {
     var clocksWithRow = [];
     var numberOfClocks = this.state.clockTypes.length - 1;
@@ -81,17 +107,19 @@ class MainView extends React.Component {
         </div>
       );
     return (
-      <div className="main-view row" id="content">
-        <div className="top-clock row">
-          <div className="large-offset-1 large-10 columns">
-            {React.createElement(this.state.clockTypes[this.state.topClockIndex], {currentHour: this.state.currentHour, currentMinute: this.state.currentMinute,
-              currentSecond: this.state.currentSecond, currentMillisecond: this.state.currentMillisecond, isTop: true})}
+      <IdleTimer activeAction={this.onActive} idleAction={this.onIdle} timeout={this.state.timeout}>
+        <div className="main-view row" id="content">
+          <div className="top-clock row">
+            <div className="large-offset-1 large-10 columns">
+              {React.createElement(this.state.clockTypes[this.state.topClockIndex], {currentHour: this.state.currentHour, currentMinute: this.state.currentMinute,
+                currentSecond: this.state.currentSecond, currentMillisecond: this.state.currentMillisecond, isTop: true})}
+            </div>
+          </div>
+          <div className="all-clocks row">
+            {clocksWithRow}
           </div>
         </div>
-        <div className="all-clocks row">
-          {clocksWithRow}
-        </div>
-      </div>
+      </IdleTimer>
     );
   }
 }
