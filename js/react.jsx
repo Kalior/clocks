@@ -14,12 +14,12 @@ var moment = require('moment');
 class MainView extends React.Component {
   constructor(props) {
     super(props);
-    var currentHour = parseInt(moment().format('HH'));
-    var currentMinute = parseInt(moment().format('mm'));
-    var second = parseInt(moment().format('ss'));
-    var millisecond = parseInt(moment().format('SSS'));
+    let currentHour = parseInt(moment().format('HH'));
+    let currentMinute = parseInt(moment().format('mm'));
+    let second = parseInt(moment().format('ss'));
+    let millisecond = parseInt(moment().format('SSS'));
 
-    var clockTypes = [
+    let clockTypes = [
       RandomClock, ColorClock, BarClock, WrongOrderClock, HSLClock, MetricClock, LocationClock, SpeedClock
     ];
 
@@ -32,10 +32,10 @@ class MainView extends React.Component {
     this.onIdle = this.onIdle.bind(this);
   }
   countTime() {
-    var nextMillisecond = this.state.currentMillisecond + 10;
-    var nextSeconds = this.state.currentSecond;
-    var nextMinute = this.state.currentMinute;
-    var nextHour = this.state.currentHour;
+    let nextMillisecond = this.state.currentMillisecond + 10;
+    let nextSeconds = this.state.currentSecond;
+    let nextMinute = this.state.currentMinute;
+    let nextHour = this.state.currentHour;
     if (nextMillisecond >= 1000) {
       nextMillisecond = nextMillisecond % 1000;
       nextSeconds++;
@@ -54,9 +54,9 @@ class MainView extends React.Component {
     this.setState({currentSecond: nextSeconds, currentMinute: nextMinute, currentHour: nextHour, currentMillisecond: nextMillisecond});
   }
   componentDidMount() {
-    var seed = this.state.currentMinute;
-    var rand = require('random-seed').create(seed);
-    var index = rand.intBetween(0, this.state.clockTypes.length-1);
+    let seed = this.state.currentMinute;
+    let rand = require('random-seed').create(seed);
+    let index = rand.intBetween(0, this.state.clockTypes.length-1);
     this.setState({timer: setInterval(this.countTime, 10), topClockIndex: index});
   }
   componentWillUnmount() {
