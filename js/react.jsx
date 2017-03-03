@@ -1,6 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
-import RandomClock from './clocks/randomClock.jsx';
+import RandomSeed from 'random-seed';
+
+import ScrambleClock from './clocks/scrambledClock.jsx';
 import ColorClock from './clocks/colorClock.jsx';
 import WrongOrderClock from './clocks/wrongOrder.jsx';
 import HSLClock from './clocks/hslClock.jsx';
@@ -8,6 +10,8 @@ import BarClock from './clocks/barClock.jsx';
 import MetricClock from './clocks/metricClock.jsx';
 import LocationClock from './clocks/locationClock.jsx';
 import SpeedClock from './clocks/speedClock.jsx';
+import ShuffleClock from './clocks/shuffleClock.jsx';
+
 var moment = require('moment');
 
 class MainView extends React.Component {
@@ -18,12 +22,30 @@ class MainView extends React.Component {
     var second = parseInt(moment().format('ss'));
     var millisecond = parseInt(moment().format('SSS'));
 
+    let rand = RandomSeed.create(millisecond);
+
     var clockTypes = [
-      RandomClock, ColorClock, BarClock, WrongOrderClock, HSLClock, MetricClock, LocationClock, SpeedClock
+      ScrambleClock,
+      ColorClock,
+      BarClock,
+      WrongOrderClock,
+      HSLClock,
+      MetricClock,
+      //LocationClock,
+      SpeedClock,
+      ShuffleClock
     ];
 
-    this.state = {currentHour: currentHour, currentMinute: currentMinute, currentSecond: second, currentMillisecond: millisecond,
-      timer: null, topClockIndex: 0, clockTypes: clockTypes};
+    this.state = {
+      currentHour: currentHour,
+      currentMinute: currentMinute,
+      currentSecond: second,
+      currentMillisecond: millisecond,
+      timer: null,
+      topClockIndex: 0,
+      clockTypes: clockTypes,
+      randomPageloadSeed: rand.random()
+    };
 
     this.countTime = this.countTime.bind(this);
     this.updateTopClockIndex = this.updateTopClockIndex.bind(this);
@@ -68,24 +90,42 @@ class MainView extends React.Component {
     for (var i = 0; i < numberOfClocks; i++) {
       clocksWithRow.push(
         <div className="large-3 medium-6 small-12 columns click-clock" key={i} onClick={this.updateTopClockIndex.bind(this, i)}>
-          {React.createElement(this.state.clockTypes[i], {currentHour: this.state.currentHour, currentMinute: this.state.currentMinute,
-            currentSecond: this.state.currentSecond, currentMillisecond: this.state.currentMillisecond, isTop: false})}
+          {React.createElement(this.state.clockTypes[i], {
+            currentHour: this.state.currentHour,
+            currentMinute: this.state.currentMinute,
+            currentSecond: this.state.currentSecond,
+            currentMillisecond: this.state.currentMillisecond,
+            isTop: false,
+            randomPageloadSeed: this.state.randomPageloadSeed
+          })}
         </div>
       );
     }
     // Extra for the last item as we want an added class on that one.
     clocksWithRow.push(
         <div className="large-3 medium-6 small-12 columns end click-clock" key={numberOfClocks} onClick={this.updateTopClockIndex.bind(this, numberOfClocks)}>
-          {React.createElement(this.state.clockTypes[i], {currentHour: this.state.currentHour, currentMinute: this.state.currentMinute,
-            currentSecond: this.state.currentSecond, currentMillisecond: this.state.currentMillisecond, isTop: false})}
+          {React.createElement(this.state.clockTypes[i], {
+            currentHour: this.state.currentHour,
+            currentMinute: this.state.currentMinute,
+            currentSecond: this.state.currentSecond,
+            currentMillisecond: this.state.currentMillisecond,
+            isTop: false,
+            randomPageloadSeed: this.state.randomPageloadSeed})}
         </div>
       );
+
+
     return (
       <div className="main-view row" id="content">
         <div className="top-clock row">
           <div className="large-offset-1 large-10 columns">
-            {React.createElement(this.state.clockTypes[this.state.topClockIndex], {currentHour: this.state.currentHour, currentMinute: this.state.currentMinute,
-              currentSecond: this.state.currentSecond, currentMillisecond: this.state.currentMillisecond, isTop: true})}
+            {React.createElement(this.state.clockTypes[this.state.topClockIndex], {
+              currentHour: this.state.currentHour,
+              currentMinute: this.state.currentMinute,
+              currentSecond: this.state.currentSecond,
+              currentMillisecond: this.state.currentMillisecond,
+              isTop: true,
+              randomPageloadSeed: this.state.randomPageloadSeed})}
           </div>
         </div>
         <div className="all-clocks row">
