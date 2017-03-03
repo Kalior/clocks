@@ -1,5 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
+import IdleTimer from 'react-idle-timer';
 import RandomSeed from 'random-seed';
 
 import ScrambleClock from './clocks/scrambledClock.jsx';
@@ -17,21 +18,21 @@ var moment = require('moment');
 class MainView extends React.Component {
   constructor(props) {
     super(props);
-    var currentHour = parseInt(moment().format('HH'));
-    var currentMinute = parseInt(moment().format('mm'));
-    var second = parseInt(moment().format('ss'));
-    var millisecond = parseInt(moment().format('SSS'));
+    let currentHour = parseInt(moment().format('HH'));
+    let currentMinute = parseInt(moment().format('mm'));
+    let second = parseInt(moment().format('ss'));
+    let millisecond = parseInt(moment().format('SSS'));
 
     let rand = RandomSeed.create(millisecond);
 
-    var clockTypes = [
+    let clockTypes = [
       ScrambleClock,
       ColorClock,
       BarClock,
       WrongOrderClock,
       HSLClock,
       MetricClock,
-      //LocationClock,
+      LocationClock,
       SpeedClock,
       ShuffleClock
     ];
@@ -44,17 +45,21 @@ class MainView extends React.Component {
       timer: null,
       topClockIndex: 0,
       clockTypes: clockTypes,
-      randomPageloadSeed: rand.random()
+      randomPageloadSeed: rand.random(),
+      idle: false,
+      timeout: 50000
     };
 
     this.countTime = this.countTime.bind(this);
     this.updateTopClockIndex = this.updateTopClockIndex.bind(this);
+    this.onActive = this.onActive.bind(this);
+    this.onIdle = this.onIdle.bind(this);
   }
   countTime() {
-    var nextMillisecond = this.state.currentMillisecond + 10;
-    var nextSeconds = this.state.currentSecond;
-    var nextMinute = this.state.currentMinute;
-    var nextHour = this.state.currentHour;
+    let nextMillisecond = this.state.currentMillisecond + 10;
+    let nextSeconds = this.state.currentSecond;
+    let nextMinute = this.state.currentMinute;
+    let nextHour = this.state.currentHour;
     if (nextMillisecond >= 1000) {
       nextMillisecond = nextMillisecond % 1000;
       nextSeconds++;
@@ -73,9 +78,9 @@ class MainView extends React.Component {
     this.setState({currentSecond: nextSeconds, currentMinute: nextMinute, currentHour: nextHour, currentMillisecond: nextMillisecond});
   }
   componentDidMount() {
-    var seed = this.state.currentMinute;
-    var rand = require('random-seed').create(seed);
-    var index = rand.intBetween(0, this.state.clockTypes.length-1);
+    let seed = this.state.currentMinute;
+    let rand = require('random-seed').create(seed);
+    let index = rand.intBetween(0, this.state.clockTypes.length-1);
     this.setState({timer: setInterval(this.countTime, 10), topClockIndex: index});
   }
   componentWillUnmount() {
@@ -83,6 +88,29 @@ class MainView extends React.Component {
   }
   updateTopClockIndex(i) {
     this.setState({topClockIndex: i});
+  }
+  onActive() {
+    if (this.state.idle) {
+      console.log('active');
+      let currentHour = parseInt(moment().format('HH'));
+      let currentMinute = parseInt(moment().format('mm'));
+      let second = parseInt(moment().format('ss'));
+      let millisecond = parseInt(moment().format('SSS'));
+
+      this.setState({
+        currentHour: currentHour,
+        currentMinute: currentMinute,
+        currentSecond: second,
+        currentMillisecond: millisecond,
+        idle: false
+      });
+    }
+  }
+  onIdle() {
+    if (!this.state.idle) {
+      console.log('idle');
+      this.setState({idle: true});
+    }
   }
   render() {
     var clocksWithRow = [];
@@ -116,22 +144,26 @@ class MainView extends React.Component {
 
 
     return (
-      <div className="main-view row" id="content">
-        <div className="top-clock row">
-          <div className="large-offset-1 large-10 columns">
-            {React.createElement(this.state.clockTypes[this.state.topClockIndex], {
-              currentHour: this.state.currentHour,
-              currentMinute: this.state.currentMinute,
-              currentSecond: this.state.currentSecond,
-              currentMillisecond: this.state.currentMillisecond,
-              isTop: true,
-              randomPageloadSeed: this.state.randomPageloadSeed})}
+      <IdleTimer activeAction={this.onActive} idleAction={this.onIdle} timeout={this.state.timeout}>
+        <div className="main-view row" id="content">
+          <div className="top-clock row">
+            <div className="large-offset-1 large-10 columns">
+              {React.createElement(this.state.clockTypes[this.state.topClockIndex], {
+                currentHour: this.state.currentHour,
+                currentMinute: this.state.currentMinute,
+                currentSecond: this.state.currentSecond,
+                currentMillisecond: this.state.currentMillisecond,
+                isTop: true,
+                randomPageloadSeed: this.state.randomPageloadSeed
+              })}
+            </div>
+          </div>
+
+          <div className="all-clocks row">
+            {clocksWithRow}
           </div>
         </div>
-        <div className="all-clocks row">
-          {clocksWithRow}
-        </div>
-      </div>
+      </IdleTimer>
     );
   }
 }
