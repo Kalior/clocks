@@ -14,7 +14,8 @@ export default class BarClock extends React.Component {
     var minuteDiv = <div className="bar-clock" style={{width: minutePercentage + "%", backgroundColor: "#444"}}> </div>;
     var secondDiv = <div className="bar-clock" style={{width: secondPercentage + "%", backgroundColor: "#777"}}> </div>;
 
-    var description = "If you've ever wondered how a clock that displayed time as three bars, one for each digit in a digital clock " +
+
+    var description = "If you've ever wondered how a clock that displayed time as three bars, one for each digit in a digital clock" +
       ", where each bar corresponds to that numbers fraction of the total sum of the digits, would look like, this is that. " +
       "Some hints for reading this clock: when the hour bar (the first one, no flipping here) is large, that probably means that " +
       "it is still early in the hour. If the hour bar stays relatively small all the time, it is either an early hour, or there " +
@@ -29,6 +30,7 @@ export default class BarClock extends React.Component {
           {hourDiv}{minuteDiv}{secondDiv}
         </div>
         <div className="clock-description clock-attribute">
+          <hr></hr>
           {description}
         </div>
       </div>

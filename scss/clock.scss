@@ -23,16 +23,20 @@
     padding-right: 1em;
 
     .color-clock {
-      width: 65.5px;
-      height: 65.5px;
+      width: 72px;
+      height: 72px;
     }
-    .bar-clock {
+    .bar-clock, .speed-clock {
       height: 65.5px;
     }
     .digital-clock {
       font-size: 3em;
       font-weight: 200;
       letter-spacing: -1px;
+    }
+    #roman-time {
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }
@@ -42,16 +46,20 @@
     display: flex;
     // align-content: center;
     flex-direction: column;
+    min-height: 336px;
 
     .color-clock {
-      width: 150px;
-      height: 150px;
+      width: 144px;
+      height: 144px;
     }
     .bar-clock {
-      height: 150px;
+      height: 100%;
+    }
+    .bar-clock-attribute, .speed-clock {
+      height: 144px;
     }
     .digital-clock {
-      font-size: 5em;
+      font-size: 6em;
       font-weight: 200;
       letter-spacing: -1px;
     }
@@ -76,7 +84,7 @@
   box-shadow: 0 1px 4px rgba(0,0,0,.2);
 }
 
-.bar-clock {
+.bar-clock, .speed-clock {
   border-radius: 5px;
   box-shadow: 0 1px 4px rgba(0,0,0,.2);
   margin: 0px;
@@ -85,4 +93,18 @@
 
 .color-clock {
   border-radius: 50px;
+}
+
+.larger {
+  display: inline;
+  font-size: 20px;
+}
+
+.smaller {
+  display: inline;
+  font-size: 1em;
+}
+
+.inline {
+  display: inline;
 }
