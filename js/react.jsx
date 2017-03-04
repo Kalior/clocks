@@ -93,7 +93,6 @@ class MainView extends React.Component {
   }
   onActive() {
     if (this.state.idle) {
-      console.log('active');
       let currentHour = parseInt(moment().format('HH'));
       let currentMinute = parseInt(moment().format('mm'));
       let second = parseInt(moment().format('ss'));
@@ -110,7 +109,6 @@ class MainView extends React.Component {
   }
   onIdle() {
     if (!this.state.idle) {
-      console.log('idle');
       this.setState({idle: true});
     }
   }
