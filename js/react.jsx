@@ -147,7 +147,7 @@ class MainView extends React.Component {
       <IdleTimer activeAction={this.onActive} idleAction={this.onIdle} timeout={this.state.timeout}>
         <div className="main-view row" id="content">
           <div className="top-clock row">
-            <div className="large-offset-1 large-10 columns">
+            <div className="large-offset-1 large-10 small-12 columns">
               {React.createElement(this.state.clockTypes[this.state.topClockIndex], {
                 currentHour: this.state.currentHour,
                 currentMinute: this.state.currentMinute,
