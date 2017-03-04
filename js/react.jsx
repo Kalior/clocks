@@ -146,21 +146,23 @@ class MainView extends React.Component {
     return (
       <IdleTimer activeAction={this.onActive} idleAction={this.onIdle} timeout={this.state.timeout}>
         <div className="main-view row" id="content">
-          <div className="top-clock row">
-            <div className="large-offset-1 large-10 small-12 columns">
-              {React.createElement(this.state.clockTypes[this.state.topClockIndex], {
-                currentHour: this.state.currentHour,
-                currentMinute: this.state.currentMinute,
-                currentSecond: this.state.currentSecond,
-                currentMillisecond: this.state.currentMillisecond,
-                isTop: true,
-                randomPageloadSeed: this.state.randomPageloadSeed
-              })}
+          <div className="column large-12 small-12">
+            <div className="top-clock row">
+              <div className="large-offset-1 large-10 columns">
+                {React.createElement(this.state.clockTypes[this.state.topClockIndex], {
+                  currentHour: this.state.currentHour,
+                  currentMinute: this.state.currentMinute,
+                  currentSecond: this.state.currentSecond,
+                  currentMillisecond: this.state.currentMillisecond,
+                  isTop: true,
+                  randomPageloadSeed: this.state.randomPageloadSeed
+                })}
+              </div>
             </div>
-          </div>
 
-          <div className="all-clocks row">
-            {clocksWithRow}
+            <div className="all-clocks row">
+              {clocksWithRow}
+            </div>
           </div>
         </div>
       </IdleTimer>
