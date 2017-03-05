@@ -37,7 +37,7 @@ class MainView extends React.Component {
       LocationClock,
       SpeedClock,
       ShuffleClock,
-      RomanClock
+      RomanClock,
       YearClock
     ];
 
