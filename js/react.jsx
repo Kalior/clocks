@@ -13,6 +13,7 @@ import LocationClock from './clocks/locationClock.jsx';
 import SpeedClock from './clocks/speedClock.jsx';
 import RomanClock from './clocks/romanClock.jsx';
 import ShuffleClock from './clocks/shuffleClock.jsx';
+import YearClock from './clocks/yearClock.jsx';
 
 var moment = require('moment');
 
@@ -36,7 +37,8 @@ class MainView extends React.Component {
       LocationClock,
       SpeedClock,
       ShuffleClock,
-      RomanClock
+      RomanClock,
+      YearClock
     ];
 
     this.state = {
