@@ -45,6 +45,7 @@
     "react-dom": "^15.3.2",
     "react-idle-timer": "^1.3.3",
     "roman-numeral-converter-mmxvi": "^1.0.5",
+    "standard": "^9.0.0",
     "webpack": "^1.13.2"
   }
 }
