@@ -15,6 +15,7 @@ import RomanClock from './clocks/romanClock.jsx'
 import ShuffleClock from './clocks/shuffleClock.jsx'
 import YearClock from './clocks/yearClock.jsx'
 import PrimeClock from './clocks/primeClock.jsx'
+import FikaClock from './clocks/fikaClock.jsx'
 
 var moment = require('moment')
 
@@ -40,7 +41,8 @@ class MainView extends React.Component {
       ShuffleClock,
       RomanClock,
       YearClock,
-      PrimeClock
+      PrimeClock,
+      FikaClock
     ]
 
     this.state = {
