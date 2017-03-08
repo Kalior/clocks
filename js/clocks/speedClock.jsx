@@ -17,7 +17,8 @@ export default class SpeedClock extends React.Component {
     this.drawRoundRect = this.drawRoundRect.bind(this)
   }
   componentWillReceiveProps (nextProps) {
-    if (nextProps.currentMillisecond !== this.state.currentMillisecond && !this.state.isTop) {
+    if (Math.abs(nextProps.currentMillisecond - this.state.currentMillisecond) >= 20 &&
+      !this.state.isTop) {
       this.setState({currentHour: nextProps.currentHour,
         currentMinute: nextProps.currentMinute,
         currentSecond: nextProps.currentSecond,
@@ -35,7 +36,7 @@ export default class SpeedClock extends React.Component {
     let ctx = canvas.getContext('2d')
 
     let objectHeight = canvas.height / 5
-    let objectWidth = canvas.width / 5
+    let objectWidth = canvas.width / 15
     let objectMargin = (canvas.height - (objectHeight * 3)) / 2
 
     let hourSpeed = (this.state.currentHour / 10) + 0.1
@@ -97,26 +98,26 @@ export default class SpeedClock extends React.Component {
     }
   }
   render () {
-    let description = 'This clock is quite similar to the Bar Clock in that it interprets the digit ' +
-      'at each position on the clock. It does, however, use these digits in a somewhat different fashion. ' +
-      'It simply moves the object corresponding to the digit number of pixels (times a constant factor to ' +
-      'make it slower) forward. So, if for instance the object furthest down moves slowly, ' +
-      'the number of seconds this minute is rather low. And if that same object suddenly stops, a whole minute ' +
+    let description = 'This clock is similar to the Bar Clock in that it interprets the digit ' +
+      'at each position of the clock. It does, however, use these digits in a different fashion. ' +
+      'What it does is it moves the object corresponding to the digit number of pixels (times a constant factor) ' +
+      'forward. So, if the object furthest down moves slowly, ' +
+      'the number of seconds this minute is still low. And if that object stops, a minute ' +
       'has gone by and the object above it starts moving faster. Appreciating subtle speed ' +
       'differences is the key to being able to interpret this clock.'
     let name = 'Speed Clock'
     let canvas
     if (this.props.isTop) {
-      canvas = <canvas id='speed-canvas-top' className='speed-clock' height='200' width='400' />
+      canvas = <canvas id='speed-canvas-top' className='speed-clock' height='200' width='900' />
     } else {
-      canvas = <canvas id='speed-canvas' className='speed-clock' height='200' width='400' />
+      canvas = <canvas id='speed-canvas' className='speed-clock' height='200' width='900' />
     }
     return (
       <div className='clock-wrapper'>
         <div className='clock-name clock-attribute'>
           {name}
         </div>
-        <div className='clock-attribute'>
+        <div className='clock-attribute speed-clock-attribute'>
           {canvas}
         </div>
         <div className='clock-description clock-attribute'>
