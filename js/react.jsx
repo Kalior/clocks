@@ -2,6 +2,7 @@ import React from 'react'
 import {render} from 'react-dom'
 import IdleTimer from 'react-idle-timer'
 import RandomSeed from 'random-seed'
+import Elevator from 'elevator.js'
 
 import ScrambleClock from './clocks/scrambledClock.jsx'
 import ColorClock from './clocks/colorClock.jsx'
@@ -59,7 +60,8 @@ class MainView extends React.Component {
       clockTypes: clockTypes,
       randomPageloadSeed: rand.random(),
       idle: false,
-      timeout: 50000
+      timeout: 50000,
+      elevator: null
     }
 
     this.countTime = this.countTime.bind(this)
@@ -93,12 +95,21 @@ class MainView extends React.Component {
     let seed = this.state.currentMinute
     let rand = require('random-seed').create(seed)
     let index = rand.intBetween(0, this.state.clockTypes.length - 1)
-    this.setState({timer: setInterval(this.countTime, 10), topClockIndex: index})
+
+    let elevator = new Elevator({
+      targetElement: document.querySelector('#top-clock'),
+      duration: 1000,
+      verticalPadding: 10
+    })
+    this.setState({timer: setInterval(this.countTime, 10), topClockIndex: index, elevator: elevator})
   }
   componentWillUnmount () {
     clearInterval(this.state.timer)
   }
   updateTopClockIndex (i) {
+    if (this.state.elevator != null) {
+      this.state.elevator.elevate()
+    }
     this.setState({topClockIndex: i})
   }
   onActive () {
@@ -156,7 +167,7 @@ class MainView extends React.Component {
       <IdleTimer activeAction={this.onActive} idleAction={this.onIdle} timeout={this.state.timeout}>
         <div className='main-view row' id='content'>
           <div className='column large-12 small-12'>
-            <div className='top-clock row'>
+            <div id='top-clock' className='top-clock row'>
               <div className='large-offset-1 large-10 columns'>
                 {React.createElement(this.state.clockTypes[this.state.topClockIndex], {
                   currentHour: this.state.currentHour,
