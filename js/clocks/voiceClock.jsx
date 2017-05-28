@@ -16,7 +16,7 @@ export default class MetricClock extends React.Component {
   }
   render () {
     let voiceTime = <button className='button' onClick={this.readTime} >
-      <div className='voice-text'> What is the time? <i className='fa fa-volume-up' aria-hidden='true' /> </div>
+      <div className='voice-text'> What is the time? <i className='fa fa-commenting-o' aria-hidden='true' /> </div>
     </button>
 
     let description = `
