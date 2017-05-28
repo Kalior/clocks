@@ -61,7 +61,6 @@ body {
 .top-bar {
   color: #a4a4a4;
   background-color: #333;
-  margin-bottom:    30px;
   padding:          10px;
 }
 
@@ -93,5 +92,12 @@ body {
 
 #wrapper {
   min-height:    100%;
+  margin-top:    30px;
   margin-bottom: 60px;
+  display: flex;
+  justify-content: center;
+}
+
+#content {
+  max-width: 70em;
 }

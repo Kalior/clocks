@@ -135,10 +135,9 @@ class MainView extends React.Component {
   }
   render () {
     var clocksWithRow = []
-    var numberOfClocks = this.state.clockTypes.length - 1
-    for (var i = 0; i < numberOfClocks; i++) {
+    for (var i = 0; i < this.state.clockTypes.length; i++) {
       clocksWithRow.push(
-        <div className='large-3 medium-6 small-12 columns click-clock' key={i} onClick={this.updateTopClockIndex.bind(this, i)}>
+        <div className='click-clock' key={i} onClick={this.updateTopClockIndex.bind(this, i)}>
           {React.createElement(this.state.clockTypes[i], {
             currentHour: this.state.currentHour,
             currentMinute: this.state.currentMinute,
@@ -150,39 +149,23 @@ class MainView extends React.Component {
         </div>
       )
     }
-    // Extra for the last item as we want an added class on that one.
-    clocksWithRow.push(
-      <div className='large-3 medium-6 small-12 columns end click-clock' key={numberOfClocks} onClick={this.updateTopClockIndex.bind(this, numberOfClocks)}>
-        {React.createElement(this.state.clockTypes[i], {
-          currentHour: this.state.currentHour,
-          currentMinute: this.state.currentMinute,
-          currentSecond: this.state.currentSecond,
-          currentMillisecond: this.state.currentMillisecond,
-          isTop: false,
-          randomPageloadSeed: this.state.randomPageloadSeed})}
-      </div>
-      )
 
     return (
       <IdleTimer activeAction={this.onActive} idleAction={this.onIdle} timeout={this.state.timeout}>
-        <div className='main-view row' id='content'>
-          <div className='column large-12 small-12'>
-            <div id='top-clock' className='top-clock row'>
-              <div className='large-offset-1 large-10 columns'>
-                {React.createElement(this.state.clockTypes[this.state.topClockIndex], {
-                  currentHour: this.state.currentHour,
-                  currentMinute: this.state.currentMinute,
-                  currentSecond: this.state.currentSecond,
-                  currentMillisecond: this.state.currentMillisecond,
-                  isTop: true,
-                  randomPageloadSeed: this.state.randomPageloadSeed
-                })}
-              </div>
-            </div>
+        <div className='main-view' id='content'>
+          <div id='top-clock' className='top-clock'>
+            {React.createElement(this.state.clockTypes[this.state.topClockIndex], {
+              currentHour: this.state.currentHour,
+              currentMinute: this.state.currentMinute,
+              currentSecond: this.state.currentSecond,
+              currentMillisecond: this.state.currentMillisecond,
+              isTop: true,
+              randomPageloadSeed: this.state.randomPageloadSeed
+            })}
+          </div>
 
-            <div className='all-clocks row'>
-              {clocksWithRow}
-            </div>
+          <div className='all-clocks'>
+            {clocksWithRow}
           </div>
         </div>
       </IdleTimer>

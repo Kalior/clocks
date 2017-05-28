@@ -5,31 +5,38 @@
 }
 
 .all-clocks {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  // columns: 16em;
+
   .clock-description {
     display:none;
   }
   .clock-wrapper:hover {
-    background-color: #ccc;
+    background-color: #fafafa;
     cursor: pointer;
+    z-index: 2;
+    box-shadow: 2px 4px 8px 4px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
   }
+
   .clock-wrapper {
-    border-radius: 5px;
-    box-shadow: 0 1px 4px rgba(0,0,0,.2);
-    background-color: #fff;
+    border-radius: 2px;
     margin-bottom: 1em;
-    padding: 5px;
-    padding-left: 1em;
-    padding-right: 1em;
+    padding: 0.5em;
+    transition: all 300ms;
+    width: 16em;
+    height: 8em;
 
     .color-clock {
-      width: 72px;
-      height: 72px;
+      width: 5em;
     }
-    .bar-clock, .speed-clock, .year-clock {
-      height: 65.5px;
+    .bar-clock, .speed-clock, .year-clock, .color-clock {
+      height: 4em;
     }
     .digital-clock {
-      font-size: 3em;
+      font-size: 2.5em;
       font-weight: 200;
       letter-spacing: -1px;
     }
@@ -47,27 +54,25 @@
 
 .top-clock {
   margin-bottom: 1em;
-  padding-bottom: 1em;
-  padding-top: 1em;
+  padding: 1em 2em 1em 2em;
   background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.2);
+  border-radius: 2px;
+  box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.2);
+  transform: scale(1.05);
 
   .clock-wrapper {
     display: flex;
-    // align-content: center;
     flex-direction: column;
-    min-height: 336px;
+    min-height: 21em;
 
     .color-clock {
-      width: 144px;
-      height: 144px;
+      width: 12em;
     }
     .bar-clock, .speed-clock {
       height: 100%;
     }
-    .bar-clock-attribute, .speed-clock-attribute, .year-clock {
-      height: 144px;
+    .bar-clock-attribute, .speed-clock-attribute, .year-clock, .color-clock {
+      height: 9em;
     }
     @media screen and (max-width: 640px) {
       .digital-clock, .voice-text {
@@ -96,18 +101,14 @@
 }
 
 .bar-clock, .speed-clock {
-  border-radius: 5px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.2);
-  margin: 0px;
+  border-radius: 2px;
+  box-shadow: inset 0px 0px 12px 4px rgba(0,0,0,0.2);
   display: inline-block;
+  background-color: #fff;
 }
 
 .speed-clock {
   width: 100%;
-}
-
-.color-clock {
-  border-radius: 50px;
 }
 
 .larger {
@@ -122,4 +123,8 @@
 
 .inline {
   display: inline;
+}
+
+h2 {
+  color: #ddd;
 }
