@@ -46,8 +46,6 @@ export default class ScrambledClock extends React.Component {
       "bases it's seed upon the actual minute and hour, which basically can be interpreted as scrambling the time. For instance, every day when the " +
       'clock is 20:28, this clock displays 22:56. In theory, this would make it possible to learn how to tell time using this clock. But that would require ' +
       'you to memorize the new values of the time for every minute of the day.'
-    // var description = "This is a clock that guesses at the time every minute. In fact, most of the time, this is a clock that does not tell time. Which would" +
-    //   ", technically, mean that it is a clock that sometimes tells time, stochastically. Add prediction about how often it is correct..."
     return (
       <div className='random-clock clock'>
         <DigitalClock time={randTime} name={'Scrambled Clock'} description={description} />
