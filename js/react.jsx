@@ -19,6 +19,7 @@ import PrimeClock from './clocks/primeClock.jsx'
 import FikaClock from './clocks/fikaClock.jsx'
 import BrailleClock from './clocks/brailleClock.jsx'
 import VoiceClock from './clocks/voiceClock.jsx'
+import MapClock from './clocks/mapClock.jsx'
 
 var moment = require('moment')
 
@@ -47,7 +48,8 @@ class MainView extends React.Component {
       YearClock,
       PrimeClock,
       FikaClock,
-      VoiceClock
+      VoiceClock,
+      MapClock
     ]
 
     this.state = {
