@@ -32,7 +32,10 @@
     .color-clock {
       width: 5em;
     }
-    .bar-clock, .speed-clock, .year-clock, .color-clock {
+    .map-clock {
+      width: 100%;
+    }
+    .bar-clock, .speed-clock, .year-clock, .color-clock, .map-clock {
       height: 4em;
     }
     .digital-clock {
@@ -71,7 +74,10 @@
     .bar-clock, .speed-clock {
       height: 100%;
     }
-    .bar-clock-attribute, .speed-clock-attribute, .year-clock, .color-clock {
+    .map-clock {
+      width: 36em;
+    }
+    .bar-clock-attribute, .speed-clock-attribute, .year-clock, .color-clock, .map-clock {
       height: 9em;
     }
     @media screen and (max-width: 640px) {
