@@ -53,8 +53,8 @@ export default class MapClock extends React.Component {
     }
   }
   updateMap () {
-    let latitude = (((this.state.currentHour / 24) * 180) - 90)
-    let longitude = (((this.state.currentMinute / 60) * 360) - 180)
+    let latitude = (((this.state.currentHour / 23) * 180) - 90)
+    let longitude = (((this.state.currentMinute / 59) * 360) - 180)
 
     this.setState({latitude: latitude, longitude: longitude})
   }
@@ -89,7 +89,7 @@ export default class MapClock extends React.Component {
 
     let description = `This clock updates every minute with the current time displayed as a position on a map.
       I Know what you are thinking: "The time doesn't translate into a position in any sensible way".
-      What you then presumably don't know is that if you divide the current hour by 24, multiply by 180 and
+      What you then presumably don't know is that if you divide the current hour by 23, multiply by 180 and
       subtract 90 you actually get the current hour in latitude. A similar procedure gives the current minute
       in longitude, and as such you can now not only ask the question "What is the time?" but also
       "Where is the time?" and get a (sort of) reasonable answer.
