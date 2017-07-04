@@ -4,8 +4,6 @@ import DigitalClock from '../templates/digitalClock.jsx'
 export default class ScrambledClock extends React.Component {
   constructor (props) {
     super(props)
-    this.randomTime = this.randomTime.bind(this)
-    this.seededRandom = this.seededRandom.bind(this)
     this.state = {minuteStr: '', hourStr: '', currentHour: this.props.currentHour, currentMinute: this.props.currentMinute}
   }
   componentDidMount () {
@@ -16,7 +14,7 @@ export default class ScrambledClock extends React.Component {
       this.randomTime(nextProps.currentMinute, nextProps.currentHour)
     }
   }
-  randomTime (currentMinute, currentHour) {
+  randomTime = (currentMinute, currentHour) => {
     currentMinute = currentMinute || this.state.currentMinute
     currentHour = currentHour || this.state.currentHour
     var hour = Math.floor(this.seededRandom(0, 23, currentMinute, currentHour))
@@ -31,7 +29,7 @@ export default class ScrambledClock extends React.Component {
     }
     this.setState({minuteStr: nextMinuteStr, hourStr: nextHourStr, currentHour: currentHour, currentMinute: currentMinute})
   }
-  seededRandom (max, min, minute, hour) {
+  seededRandom = (max, min, minute, hour) => {
     var seed = (hour * 100) + minute
     var rand = require('random-seed').create(seed)
     return rand.intBetween(min, max)

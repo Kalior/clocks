@@ -5,23 +5,19 @@ export default class LocationClock extends React.Component {
   constructor (props) {
     super(props)
 
-    this.getLocation = this.getLocation.bind(this)
-    this.showPosition = this.showPosition.bind(this)
-    this.showError = this.showError.bind(this)
-
     this.state = {timeStr: ''}
   }
   componentDidMount () {
     this.getLocation()
   }
-  getLocation () {
+  getLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.showPosition, this.showError)
     } else {
       this.setState({timeStr: 'Inaccessible'})
     }
   }
-  showPosition (position) {
+  showPosition = position => {
     var timeStr = Math.round(position.coords.latitude) + ':' + Math.round(position.coords.longitude) + ':'
     if (position.coords.altitude) {
       timeStr = timeStr + Math.round(position.coords.altitude)
@@ -31,7 +27,7 @@ export default class LocationClock extends React.Component {
 
     this.setState({timeStr: timeStr})
   }
-  showError () {
+  showError = () => {
     this.setState({timeStr: 'Inaccessible'})
   }
   render () {

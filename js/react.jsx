@@ -65,13 +65,8 @@ class MainView extends React.Component {
       timeout: 50000,
       elevator: null
     }
-
-    this.countTime = this.countTime.bind(this)
-    this.updateTopClockIndex = this.updateTopClockIndex.bind(this)
-    this.onActive = this.onActive.bind(this)
-    this.onIdle = this.onIdle.bind(this)
   }
-  countTime () {
+  countTime = () => {
     let nextMillisecond = this.state.currentMillisecond + 10
     let nextSeconds = this.state.currentSecond
     let nextMinute = this.state.currentMinute
@@ -108,13 +103,13 @@ class MainView extends React.Component {
   componentWillUnmount () {
     clearInterval(this.state.timer)
   }
-  updateTopClockIndex (i) {
+  updateTopClockIndex = i => {
     if (this.state.elevator != null) {
       this.state.elevator.elevate()
     }
     this.setState({topClockIndex: i})
   }
-  onActive () {
+  onActive = () => {
     if (this.state.idle) {
       let currentHour = parseInt(moment().format('HH'))
       let currentMinute = parseInt(moment().format('mm'))
@@ -130,7 +125,7 @@ class MainView extends React.Component {
       })
     }
   }
-  onIdle () {
+  onIdle = () => {
     if (!this.state.idle) {
       this.setState({idle: true})
     }

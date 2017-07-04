@@ -13,8 +13,6 @@ export default class SpeedClock extends React.Component {
       prevSecondX: 0,
       isTop: this.props.isTop
     }
-    this.renderCanvas = this.renderCanvas.bind(this)
-    this.drawRoundRect = this.drawRoundRect.bind(this)
   }
   componentWillReceiveProps (nextProps) {
     if (Math.abs(nextProps.currentMillisecond - this.state.currentMillisecond) >= 20 &&
@@ -31,7 +29,7 @@ export default class SpeedClock extends React.Component {
       this.renderCanvas()
     }
   }
-  renderCanvas () {
+  renderCanvas = () => {
     let canvas = document.getElementById('speed-canvas')
     let ctx = canvas.getContext('2d')
 
@@ -64,7 +62,7 @@ export default class SpeedClock extends React.Component {
 
     this.setState({prevHourX: hourX, prevMinuteX: minuteX, prevSecondX: secondX})
   }
-  drawRoundRect (ctx, x, y, width, height, radius, fill, stroke) {
+  drawRoundRect = (ctx, x, y, width, height, radius, fill, stroke) => {
     if (typeof stroke === 'undefined') {
       stroke = true
     }

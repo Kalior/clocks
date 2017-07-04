@@ -5,12 +5,11 @@ export default class MetricClock extends React.Component {
   constructor (props) {
     super(props)
     this.state = {currentHour: this.props.currentHour, currentMinute: this.props.currentMinute, currentSecond: this.props.currentSecond}
-    this.readTime = this.readTime.bind(this)
   }
   componentWillReceiveProps(nextProps) {
     this.setState({currentHour: this.props.currentHour, currentMinute: this.props.currentMinute, currentSecond: this.props.currentSecond})
   }
-  readTime () {
+  readTime = () => {
     let timeString = this.state.currentHour + ' ' + this.state.currentMinute + ', ' + this.state.currentSecond
     responsiveVoice.speak(timeString, 'UK English Male')
   }

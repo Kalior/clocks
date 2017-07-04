@@ -26,7 +26,6 @@ const ClockGoogleMap = withScriptjs(
 export default class MapClock extends React.Component {
   constructor (props) {
     super(props)
-    this.updateMap = this.updateMap.bind(this)
 
     this.state = {
       currentHour: this.props.currentHour,
@@ -52,7 +51,7 @@ export default class MapClock extends React.Component {
       this.updateMap()
     }
   }
-  updateMap () {
+  updateMap = () => {
     let latitude = (((this.state.currentHour / 23) * 180) - 90)
     let longitude = (((this.state.currentMinute / 59) * 360) - 180)
 
