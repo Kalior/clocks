@@ -20,6 +20,7 @@ import FikaClock from './clocks/fikaClock.jsx'
 import BrailleClock from './clocks/brailleClock.jsx'
 import VoiceClock from './clocks/voiceClock.jsx'
 import MapClock from './clocks/mapClock.jsx'
+import PomodoroClock from './clocks/pomodoroClock.jsx'
 
 var moment = require('moment')
 
@@ -49,7 +50,8 @@ class MainView extends React.Component {
       PrimeClock,
       FikaClock,
       VoiceClock,
-      MapClock
+      MapClock,
+      PomodoroClock
     ]
 
     this.state = {
@@ -67,7 +69,7 @@ class MainView extends React.Component {
     }
   }
   countTime = () => {
-    let nextMillisecond = this.state.currentMillisecond + 10
+    let nextMillisecond = this.state.currentMillisecond + 10 // count 10 milliseconds each update
     let nextSeconds = this.state.currentSecond
     let nextMinute = this.state.currentMinute
     let nextHour = this.state.currentHour
@@ -131,33 +133,43 @@ class MainView extends React.Component {
     }
   }
   render () {
-    var clocksWithRow = []
-    for (var i = 0; i < this.state.clockTypes.length; i++) {
-      clocksWithRow.push(
-        <div className='click-clock' key={i} onClick={this.updateTopClockIndex.bind(this, i)}>
-          {React.createElement(this.state.clockTypes[i], {
-            currentHour: this.state.currentHour,
-            currentMinute: this.state.currentMinute,
-            currentSecond: this.state.currentSecond,
-            currentMillisecond: this.state.currentMillisecond,
-            isTop: false,
-            randomPageloadSeed: this.state.randomPageloadSeed
-          })}
-        </div>
-      )
-    }
+    const {
+      clockTypes,
+      currentHour,
+      currentMinute,
+      currentSecond,
+      currentMillisecond,
+      randomPageloadSeed,
+      topClockIndex,
+      timeout
+    } = this.state
+
+    const clocksWithRow = clockTypes.map((clockType, i) => {
+        return (
+          <div className='click-clock' key={i} onClick={this.updateTopClockIndex.bind(this, i)}>
+            {React.createElement(clockType, {
+              currentHour: currentHour,
+              currentMinute: currentMinute,
+              currentSecond: currentSecond,
+              currentMillisecond: currentMillisecond,
+              isTop: false,
+              randomPageloadSeed: randomPageloadSeed
+            })}
+          </div>
+        )
+    })
 
     return (
-      <IdleTimer activeAction={this.onActive} idleAction={this.onIdle} timeout={this.state.timeout}>
+      <IdleTimer activeAction={this.onActive} idleAction={this.onIdle} timeout={timeout}>
         <div className='main-view' id='content'>
           <div id='top-clock' className='top-clock'>
-            {React.createElement(this.state.clockTypes[this.state.topClockIndex], {
-              currentHour: this.state.currentHour,
-              currentMinute: this.state.currentMinute,
-              currentSecond: this.state.currentSecond,
-              currentMillisecond: this.state.currentMillisecond,
+            {React.createElement(clockTypes[topClockIndex], {
+              currentHour: currentHour,
+              currentMinute: currentMinute,
+              currentSecond: currentSecond,
+              currentMillisecond: currentMillisecond,
               isTop: true,
-              randomPageloadSeed: this.state.randomPageloadSeed
+              randomPageloadSeed: randomPageloadSeed
             })}
           </div>
 
