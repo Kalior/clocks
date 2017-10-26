@@ -9,9 +9,12 @@ export default class MetricClock extends React.Component {
     this.state = {primeNumbers: primes}
   }
   render () {
-    let secondText = _.includes(this.state.primeNumbers, this.props.currentSecond) ? this.props.currentSecond : ''
-    let minuteText = _.includes(this.state.primeNumbers, this.props.currentMinute) ? this.props.currentMinute : ''
-    let hourText = _.includes(this.state.primeNumbers, this.props.currentHour) ? this.props.currentHour : ''
+    const {primeNumbers} = this.state
+    const {currentSecond, currentMinute, currentHour} = this.props
+
+    let secondText = _.includes(primeNumbers, currentSecond) ? currentSecond : ''
+    let minuteText = _.includes(primeNumbers, currentMinute) ? currentMinute : ''
+    let hourText = _.includes(primeNumbers, currentHour) ? currentHour : ''
 
     let metricTime = hourText + ':' + minuteText + ':' + secondText
     let description = 'As a student of Computer Science and Engineering, I have understood the importance of ' +
