@@ -17,9 +17,9 @@ export default class PomodoroClock extends React.Component {
     const time = pomondoroCycles + ':' + pomondoroWorkMinute + ':' + pomondoroBreakMinute + ':' + currentSecond
 
     const name = 'Pomodoro clock'
-    const description = `If you're a skilled procrastinator, you may have had the
+    const description = `If you're a skilled procrastinator, you may have had Francesco Cirillo's
       Pomodoro technique recommended to you. If you've not heard of it before, it
-      is a system where time is divided into intervals and was developed by Francesco Cirillo.
+      is a system designed to help focus on a task by dividing time into intervals.
       Each period consists of 25 minutes of work interleaved with roughly 5 minutes of rest.
       After 4 Pomodoro cycles, the method suggests a longer break.
       This clock uses the Pomodoro method to display the time. The most significant indicator represents

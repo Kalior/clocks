@@ -42,9 +42,11 @@ export default class ShuffleClock extends React.Component {
     var description = `
     This clock shuffles the positions of the numbers
      and it is actually possible to read the time from this one.
-     The seconds reveals themselves almost at once. The position for the first minute number is also tolerable to wait for.
+     The seconds reveals themselves almost at once. The position for
+     the first minute number is also tolerable to wait for.
      After this, however, things gets tedious.
-     You might be able to exclude some digits from some positions, i.e. the position representing tenths of hours cannot go above '2'.
+     You might be able to exclude some digits from some positions,
+     e.g. the position representing tenths of hours cannot go above '2'.
     `
     return (
       <div className='random-clock clock'>

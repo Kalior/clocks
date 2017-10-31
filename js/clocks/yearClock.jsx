@@ -40,7 +40,7 @@ export default class YearClock extends React.Component {
     var description = 'This clock is based upon the slow watch, but instead of showing a whole day it shows ' +
       'the entire year. Sadly, this clock manages to show the current month pretty accurately. Thankfully, it is ' +
       'virtually impossible to tell the time of day with this clock. Would actually ' +
-      'be pretty cool to have a clock like this.'
+      'be pretty cool to have a watch like this.'
     var name = 'Year Clock'
     var canvas
     if (this.props.isTop) {

@@ -13,11 +13,11 @@ export default class BrailleClock extends React.Component {
     let secondBrailleTime = this.props.currentSecond < 10 ? zeroBraille + secondBraille : secondBraille
     let time = hourBrailleTime + ':' + minuteBrailleTime + ':' + secondBrailleTime
 
-    let description = 'In order to highlight one of the more common uncommon writing systems, this clock ' +
-      'displays time using braille in six dot notation. So even though this clock actually displays time ' +
-      "it does so in a way that most people can't read. I wouldn't be surprised if fewer people can read this " +
-      'clock than the Roman clock. If you can read this one, good on you, I wish more people could. ' +
-      "Also, isn't it ironic to display braille on a flat screen?"
+    let description = `In order to highlight one of the more common uncommon writing systems, this clock
+      displays time using braille in six dot notation. So even though this clock actually displays time
+      it does so in a way that most people can't read. I wouldn't be surprised if fewer people can read this
+      clock than the Roman clock. If you can read this one, good on you!
+      Also, isn't it ironic to display braille on a flat screen?`
     return (
       <DigitalClock time={time} name={'Braille Clock'} description={description} />
     )
