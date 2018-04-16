@@ -15,3 +15,4 @@ export { default as BrailleClock } from "./brailleClock.jsx";
 export { default as VoiceClock } from "./voiceClock.jsx";
 export { default as MapClock } from "./mapClock.jsx";
 export { default as PomodoroClock } from "./pomodoroClock.jsx";
+export { default as CodeFoodClock } from "./codeFoodClock.jsx";

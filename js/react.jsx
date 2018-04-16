@@ -53,8 +53,9 @@ class MainView extends React.Component {
       FikaClock,
       VoiceClock,
       MapClock,
-      PomodoroClock
-    ]
+      PomodoroClock,
+      CodeFoodClock
+    ];
 
     this.state = {
       currentHour: currentHour,
