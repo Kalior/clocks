@@ -37,7 +37,6 @@
     "babelify": "^7.3.0",
     "braille": "^1.1.0",
     "elevator.js": "^1.0.0",
-    "foundation-sites": "^6.3.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-react": "^3.1.0",
     "lodash": "^4.17.4",

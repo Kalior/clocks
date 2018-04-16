@@ -11,7 +11,7 @@
   // columns: 16em;
 
   .clock-description {
-    display:none;
+    display: none;
   }
   .clock-wrapper:hover {
     background-color: #fafafa;
@@ -27,7 +27,7 @@
     padding: 0.5em;
     transition: all 300ms;
     width: 16em;
-    height: 8em;
+    height: 6em;
 
     .color-clock {
       width: 5em;
@@ -55,60 +55,9 @@
   }
 }
 
-.top-clock {
-  margin-bottom: 1em;
-  padding: 1em 2em 1em 2em;
-  background-color: #fff;
-  border-radius: 2px;
-  box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.2);
-  transform: scale(1.05);
-
-  .clock-wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 21em;
-
-    .color-clock {
-      width: 12em;
-    }
-    .bar-clock, .speed-clock {
-      height: 100%;
-    }
-    .map-clock {
-      width: 36em;
-    }
-    .bar-clock-attribute, .speed-clock-attribute, .year-clock, .color-clock, .map-clock {
-      height: 9em;
-    }
-    @media screen and (max-width: 640px) {
-      .digital-clock, .voice-text {
-        font-size: 4em;
-        font-weight: 200;
-        letter-spacing: -1px;
-      }
-    }
-    @media screen and (min-width: 640px) {
-      .digital-clock, .voice-text {
-        font-size: 6em;
-        font-weight: 200;
-        letter-spacing: -1px;
-      }
-    }
-  }
-  .clock-attribute {
-    align-self: center;
-  }
-  .clock-description {
-    text-align: center;
-  }
-  .clock-name {
-    text-align: center;
-  }
-}
-
 .bar-clock, .speed-clock {
   border-radius: 2px;
-  box-shadow: inset 0px 0px 12px 4px rgba(0,0,0,0.2);
+  box-shadow: inset 0px 0px 12px 4px rgba(0, 0, 0, 0.2);
   display: inline-block;
   background-color: #fff;
 }
