@@ -4,23 +4,25 @@ import IdleTimer from 'react-idle-timer'
 import RandomSeed from 'random-seed'
 import Elevator from 'elevator.js'
 
-import ScrambleClock from './clocks/scrambledClock.jsx'
-import ColorClock from './clocks/colorClock.jsx'
-import WrongOrderClock from './clocks/wrongOrder.jsx'
-import HSLClock from './clocks/hslClock.jsx'
-import BarClock from './clocks/barClock.jsx'
-import MetricClock from './clocks/metricClock.jsx'
-import LocationClock from './clocks/locationClock.jsx'
-import SpeedClock from './clocks/speedClock.jsx'
-import RomanClock from './clocks/romanClock.jsx'
-import ShuffleClock from './clocks/shuffleClock.jsx'
-import YearClock from './clocks/yearClock.jsx'
-import PrimeClock from './clocks/primeClock.jsx'
-import FikaClock from './clocks/fikaClock.jsx'
-import BrailleClock from './clocks/brailleClock.jsx'
-import VoiceClock from './clocks/voiceClock.jsx'
-import MapClock from './clocks/mapClock.jsx'
-import PomodoroClock from './clocks/pomodoroClock.jsx'
+import {
+  ScrambleClock,
+  ColorClock,
+  WrongOrderClock,
+  HSLClock,
+  BarClock,
+  MetricClock,
+  LocationClock,
+  SpeedClock,
+  RomanClock,
+  ShuffleClock,
+  YearClock,
+  PrimeClock,
+  FikaClock,
+  BrailleClock,
+  VoiceClock,
+  MapClock,
+  PomodoroClock
+} from "./clocks";
 
 var moment = require('moment')
 
