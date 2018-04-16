@@ -16,7 +16,7 @@ export default class PomodoroClock extends React.Component {
 
     const time = pomondoroCycles + ':' + pomondoroWorkMinute + ':' + pomondoroBreakMinute + ':' + currentSecond
 
-    const name = 'Pomodoro clock'
+    const name = 'Pomodoro Clock'
     const description = `If you're a skilled procrastinator, you may have had Francesco Cirillo's
       Pomodoro technique recommended to you. If you've not heard of it before, it
       is a system designed to help focus on a task by dividing time into intervals.

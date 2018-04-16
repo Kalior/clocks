@@ -50,7 +50,7 @@ export default class ShuffleClock extends React.Component {
     `
     return (
       <div className='random-clock clock'>
-        <DigitalClock time={randTime} name={'Shuffle clock'} description={description} />
+        <DigitalClock time={randTime} name={'Shuffle Clock'} description={description} />
       </div>
     )
   }
