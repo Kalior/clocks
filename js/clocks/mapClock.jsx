@@ -5,7 +5,7 @@ import {
   GoogleMap,
   Marker
 } from 'react-google-maps'
-import withScriptjs from 'react-google-maps/lib/async/withScriptjs'
+import withScriptjs from 'react-google-maps/lib/withScriptjs'
 
 const ClockGoogleMap = withScriptjs(
   withGoogleMap(
