@@ -5,9 +5,10 @@
 @import 'footer';
 @import 'topClock';
 @import 'button';
+@import 'fonts';
 
 body {
-  font-family: "Lucida Console";
+  font-family: "Inconsolata", monospace;
   background-color: #eee;
   color: #666;
   margin: 0px;
