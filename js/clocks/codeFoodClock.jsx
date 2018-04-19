@@ -23,13 +23,13 @@ export default class CodeFoodClock extends React.Component {
 
   componentWillReceiveProps (newProps) {
     if (newProps.currentMinute != this.props.currentMinute) {
-      const { oldTime } = this.state;
+      const { time } = this.state;
       let { ignore, options } = this.state;
       const { currentHour, currentMinute, currentSecond } = newProps;
 
       const newTime = this.checkTime(newProps);
 
-      if (oldTime !== newTime) {
+      if (time !== newTime) {
         ignore = false;
         options = {
           tag: currentHour + ":" + currentSecond + ":" + currentSecond,
@@ -71,12 +71,13 @@ export default class CodeFoodClock extends React.Component {
       instead of being targeted towards a tortoise capable of inventing almost
       anything, it targets equally capable programmers.  Basically, as a programmer,
       you only need to know two things: when to code and when to eat.  This clock
-      tells you exactly that.`;
+      tells you exactly that. Also gives a friendly notification, so you don't miss
+      either event.`;
 
     let notification = <Notification
         ignore={ignore && isTop}
         timeout={5000}
-        title={time}
+        title={time + " time!"}
         askAgain={false}
         options={options}
       />
