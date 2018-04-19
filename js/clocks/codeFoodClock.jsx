@@ -67,10 +67,10 @@ export default class CodeFoodClock extends React.Component {
     const { isTop } = this.props;
     const { time, ignore, options } = this.state;
     let description = `Inspired by Skalman's clock (from Bamse, a Swedish cartoon),
-      tells him when to eat and when to sleep.  This clock works similarly, but
+      which tells him when to eat and when to sleep.  This clock works similarly, but
       instead of being targeted towards a tortoise capable of inventing almost
-      anything, it equally capable programmers.  Basically, as a programmer,
-      you only need to know two when to code and when to eat, and this clock
+      anything, it targets equally capable programmers.  Basically, as a programmer,
+      you only need to know two things: when to code and when to eat.  This clock
       tells you exactly that.`;
 
     let notification = <Notification
@@ -85,7 +85,7 @@ export default class CodeFoodClock extends React.Component {
       <div className="clock">
         <DigitalClock
           time={time}
-          name={"CodeFood Clock"}
+          name={"Code/Food Clock"}
           description={description}
         />
         {notification}
