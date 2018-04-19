@@ -74,7 +74,7 @@ export default class CodeFoodClock extends React.Component {
       tells you exactly that.`;
 
     let notification = <Notification
-        ignore={ignore && !isTop}
+        ignore={ignore && isTop}
         timeout={5000}
         title={time}
         askAgain={false}
