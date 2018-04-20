@@ -74,13 +74,14 @@ export default class CodeFoodClock extends React.Component {
       tells you exactly that. Also gives a friendly notification, so you don't miss
       either event.`;
 
-    let notification = <Notification
-        ignore={ignore && isTop}
-        timeout={5000}
-        title={time + " time!"}
-        askAgain={false}
-        options={options}
-      />
+    // let notification = <Notification
+    //     ignore={ignore && isTop}
+    //     timeout={5000}
+    //     title={time + " time!"}
+    //     askAgain={false}
+    //     options={options}
+    //   />
+    // {notification}
 
     return (
       <div className="clock">
@@ -89,7 +90,6 @@ export default class CodeFoodClock extends React.Component {
           name={"Code/Food Clock"}
           description={description}
         />
-        {notification}
       </div>
     );
   }
