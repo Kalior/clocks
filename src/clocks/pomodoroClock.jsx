@@ -10,7 +10,6 @@ export default class PomodoroClock extends React.Component {
     const currentCycle = minutesSinceMidnight % 30
     const currentlyBreak = currentCycle >= 25
 
-    const pomondoroMinute = currentlyBreak ? currentCycle - 25 : currentCycle
     const pomondoroWorkMinute = currentlyBreak ? '0' : currentCycle
     const pomondoroBreakMinute = currentlyBreak ? currentCycle - 25 : '0'
 

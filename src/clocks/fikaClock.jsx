@@ -3,7 +3,7 @@ import DigitalClock from '../templates/digitalClock.jsx'
 
 export default class MetricClock extends React.Component {
   render () {
-    const {currentSecond, currentMinute, currentHour} = this.props
+    const {currentMinute, currentHour} = this.props
     let time = "It's not fika"
     if ((currentHour === 10 && currentMinute <= 30) ||
       (currentHour === 9 && currentMinute >= 30) ||

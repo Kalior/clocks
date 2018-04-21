@@ -6,8 +6,6 @@ export default class CodeFoodClock extends React.Component {
   constructor(props) {
     super(props);
 
-    const { currentHour, currentMinute, currentSecond } = props;
-
     const time = this.checkTime(props);
     this.state = {
       time: time
@@ -19,13 +17,13 @@ export default class CodeFoodClock extends React.Component {
   }
 
   componentWillReceiveProps (newProps) {
-    if (newProps.currentMinute != this.props.currentMinute) {
+    if (newProps.currentMinute !== this.props.currentMinute) {
       const { time } = this.state;
-      const { currentHour, currentMinute, currentSecond } = newProps;
+      const { isTop } = newProps;
 
       const newTime = this.checkTime(newProps);
 
-      if (time !== newTime) {
+      if (time !== newTime && !isTop) {
         this.sendNotification(newTime);
       }
 
@@ -62,11 +60,11 @@ export default class CodeFoodClock extends React.Component {
   }
 
   checkTime = (props) => {
-    const { currentSecond, currentMinute, currentHour } = props;
+    const { currentMinute, currentHour } = props;
 
     let time = "Code";
     if (
-      _.some([8, 12, 16, 20], t =>
+      _.some([8, 12, 19, 20], t =>
         this.withinRange(currentHour, currentMinute, t)
       )
     ) {
@@ -77,13 +75,12 @@ export default class CodeFoodClock extends React.Component {
 
   withinRange = (currentHour, currentMinute, targetHour) => {
     return (
-      (currentHour === targetHour && currentMinute <= 15) ||
+      (currentHour === targetHour && currentMinute <= 21) ||
       (currentHour === targetHour - 1 && currentMinute >= 45)
     );
   };
 
   render() {
-    const { isTop } = this.props;
     const { time } = this.state;
     let description = `Inspired by Skalman's clock (from Bamse, a Swedish cartoon),
       which tells him when to eat and when to sleep.  This clock works similarly, but

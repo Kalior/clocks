@@ -9,7 +9,6 @@ export default class ColorClock extends React.Component {
     let color = 'rgb(' + red + ',' + green + ',' + blue + ')'
 
     let clockStyle = {
-      background: color,
       background: 'radial-gradient(circle, ' + color + '40%, rgba(255,255,255,0) 60%)'
     }
 

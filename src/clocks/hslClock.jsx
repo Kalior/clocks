@@ -9,7 +9,6 @@ export default class HSLClock extends React.Component {
     let color = 'hsl(' + hue + ',' + sat + '%,' + light + '%)'
 
     let clockStyle = {
-      background: color,
       background: 'radial-gradient(circle, ' + color + '40%, rgba(255,255,255,0) 60%)'
     }
 

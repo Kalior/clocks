@@ -1,5 +1,5 @@
-import React from 'react'
-import DigitalClock from '../templates/digitalClock.jsx'
+import React from 'react';
+import DigitalClock from '../templates/digitalClock.jsx';
 
 export default class MetricClock extends React.Component {
   constructor (props) {
@@ -11,7 +11,9 @@ export default class MetricClock extends React.Component {
   }
   readTime = () => {
     let timeString = this.state.currentHour + ' ' + this.state.currentMinute + ', ' + this.state.currentSecond
+    /*eslint-disable no-undef*/
     responsiveVoice.speak(timeString, 'UK English Male')
+    /*eslint-enable no-undef*/
   }
   render () {
     let voiceTime = <button className='button' onClick={this.readTime} >
