@@ -1,20 +1,20 @@
 import React from 'react'
 
 export default class DigitalClock extends React.Component {
-  render () {
+  render() {
     return (
       <div className='clock-wrapper'>
         <div className='clock-name clock-attribute'>
           {this.props.name}
         </div>
-        <div className='digital-clock clock-attribute'>
+        <div className='digital-clock clock-attribute' >
           {this.props.time}
         </div>
         <div className='clock-description clock-attribute'>
           <hr />
           {this.props.description}
         </div>
-      </div>
+      </div >
     )
   }
 }

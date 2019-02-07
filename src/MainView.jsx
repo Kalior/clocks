@@ -21,7 +21,8 @@ import {
   VoiceClock,
   MapClock,
   PomodoroClock,
-  CodeFoodClock
+  CodeFoodClock,
+  HashClock
 } from "./clocks";
 
 var moment = require("moment");
@@ -54,7 +55,8 @@ export default class MainView extends React.Component {
       VoiceClock,
       MapClock,
       PomodoroClock,
-      CodeFoodClock
+      CodeFoodClock,
+      HashClock
     };
 
     this.state = {
