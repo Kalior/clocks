@@ -9,7 +9,7 @@ export default function AbsoluteClock(props) {
     const totalSeconds = secondsUntilToday + secondsToday;
 
     const name = 'Absolute time'
-    const description = `We do we even arbitrarily divide time up into parts of 24 and 60?  I find
+    const description = `Why do we even arbitrarily divide time up into parts of 24 and 60?  I find
             it much more convenient to use the absolute number of seconds since the start of the year
             (which, when I think about it, also seems fairly arbitrary).
             This approach to time also has the potential to remove the need for numbering years in the future.
