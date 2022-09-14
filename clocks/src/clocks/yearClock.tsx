@@ -49,7 +49,7 @@ export const YearClock = () => {
         'virtually impossible to tell the time of day with this clock. Would actually ' +
         'be pretty cool to have a watch like this.'
     const name = 'Year Clock'
-    const canvas = <YearCanvas ref={canvasRef} id='year-canvas-top' className='year-clock' height='200' width='200'/>
+    const canvas = <YearCanvas ref={canvasRef} id='year-canvas-top' height='200' width='200'/>
 
     return (
         <ClockWrapper
@@ -58,10 +58,10 @@ export const YearClock = () => {
             onClick={() => setIsExpanded(!isExpanded)}
             onBlur={() => setIsExpanded(false)}
         >
-            <ClockName className='clock-name clock-attribute'>
+            <ClockName>
                 {name}
             </ClockName>
-            <div className='clock-attribute speed-clock-attribute'>
+            <div>
                 {canvas}
             </div>
             <ClockDescription isExpanded={isExpanded}>

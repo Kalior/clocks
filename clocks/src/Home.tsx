@@ -66,7 +66,6 @@ export const HomeView = () => {
     const clocksWithRow = Object.keys(clockTypes).map(clockKey => {
         return (
             <div
-                className="click-clock"
                 key={clockKey}
                 onClick={() => updateTopClockKey(clockKey)}
             >
@@ -92,5 +91,10 @@ export const HomeView = () => {
 const AllClocks = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 

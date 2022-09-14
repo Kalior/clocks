@@ -33,7 +33,9 @@ export const DigitalClock = (props: DigitalClockProps) => {
 };
 
 const DigitalClockTime = styled(ClockAttribute)`
-  font-size: 1.75em;
-  margin-top: 1em;
-  text-overflow: ellipsis;
+  font-size: 1.75rem;
+  margin-top: 1rem;
+  text-align: left;
+
+  word-break: normal;
 `;

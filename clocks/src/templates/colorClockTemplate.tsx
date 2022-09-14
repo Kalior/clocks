@@ -36,8 +36,6 @@ export const ColorClockTemplate = (props: ColorClockTemplateProps) => {
 const ColorClock = styled.div`
   width: 5em;
   height: 5em;
-  align-self: center;
-  margin: 0 auto;
 `;
 
 

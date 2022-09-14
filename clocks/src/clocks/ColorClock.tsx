@@ -16,7 +16,10 @@ export const ColorClock = () => {
     let secondDiv = <ColorElement style={{background: `rgb(0, 0, ${blue})`}}/>
 
     const colorElement = <>
+        <div>
         {hourDiv}{minuteDiv}{secondDiv}
+        </div>
+        <GlassSlide />
     </>
 
     let description = 'Imagine, if you will, a clock that shows the time as a color.  I know this may seem alien,' +
@@ -32,4 +35,15 @@ const ColorElement = styled.div`
   display: inline-block;
   height: 2em;
   width: 2em;
+`;
+
+const GlassSlide = styled.div`
+  backdrop-filter: blur(0.1rem);
+  position: relative;
+  height: 5.5rem;
+  background: #f7f7f724;
+  border-radius: 1rem;
+  margin-top: -4.6rem;
+  margin-left: -2rem;
+  width: 14rem;
 `;

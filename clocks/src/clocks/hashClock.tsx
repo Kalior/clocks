@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs'
 import {useTime} from "../hooks/useTime";
 import {getHours, getMinutes} from "date-fns";
 import {DigitalClock} from "../templates/digitalClock";
+import styled from "@emotion/styled";
 
 export const HashClock = () => {
     const now = useTime(10000)
@@ -24,9 +25,16 @@ export const HashClock = () => {
     const description = `The hashed and salted version of the current hour and minute.
             Really useful if you, for instance, wanted to store the current time
             securely in a database.`
+    const hashElement = <HashElement>{hash}</HashElement>
     return (
         <div className='clock hash-clock'>
-            <DigitalClock time={hash} name={'Hash Clock'} description={description}/>
+            <DigitalClock time={hashElement} name={'Hash Clock'} description={description}/>
         </div>
     )
 }
+
+const HashElement = styled.div`
+    overflow: hidden;
+  text-overflow: ellipsis;
+    font-size: 0.75rem;
+`;
