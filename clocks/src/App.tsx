@@ -107,7 +107,6 @@ const AllContent = styled.div<AllContentProps>`
   display: flex;
   flex-flow: column;
   min-height: 100vh;
-  --ring-color: rgba(54, 28, 64, 0.9);
   background-image: linear-gradient(90deg, ${props => props.color ? props.color : "rgba(153, 217, 163, 0.43)"} 20%, #fff0 100%);
 `;
 

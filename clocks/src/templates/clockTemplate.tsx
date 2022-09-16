@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import {css} from "@emotion/react";
 import Tilt from "react-parallax-tilt";
 
 export const ClockWrapper = styled.div`

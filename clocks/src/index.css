@@ -37,6 +37,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --ring-color: rgba(54, 28, 64, 0.9);
 }
 
 a {

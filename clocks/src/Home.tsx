@@ -1,10 +1,4 @@
-import React, {useState} from "react";
-import IdleTimer from "react-idle-timer";
-import Scroll from "react-scroll"
-import {compareAsc, format, getHours, getMilliseconds, getMinutes, getSeconds} from 'date-fns'
-import {useNavigate, useParams} from "react-router-dom";
-
-let scroll = Scroll.animateScroll;
+import React from "react";
 import styled from "@emotion/styled";
 
 import {HSLClock} from "./clocks/hslClock";
@@ -28,8 +22,6 @@ import {ColorClock} from "./clocks/ColorClock";
 
 
 export const HomeView = () => {
-    let navigate = useNavigate();
-
     const clockTypes: Record<string, React.FunctionComponent> = {
         AbsoluteClock,
         HSLClock,
@@ -50,18 +42,6 @@ export const HomeView = () => {
         InflationClock,
         ColorClock
     };
-    const {clockId} = useParams()
-
-    const [topClock, setTopClock] = useState(clockId || "HSLClock");
-
-
-    const updateTopClockKey = (newTopClock: string) => {
-        //scroll.scrollToTop();
-        navigate('/' + newTopClock, {replace: true})
-
-        setTopClock(newTopClock)
-    };
-
 
     const clocksWithRow = Object.keys(clockTypes).map(clockKey => {
         return (
@@ -73,9 +53,7 @@ export const HomeView = () => {
 
 
     return (
-
         <div className="main-view" id="content">
-
             <AllClocks>
                 {clocksWithRow}
             </AllClocks>
