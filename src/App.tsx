@@ -117,7 +117,6 @@ const TopBar = styled.div`
   position: sticky;
   top: 14rem;
   margin-left: 6rem;
-  //transform: rotate(-15deg);
 
   @media (max-width: 768px) {
     margin-left: 1rem;
@@ -192,10 +191,16 @@ const Footer = styled.div`
 
 const Clock = styled.div`
   position: fixed;
-  top: 18vh;
-  left: 50vw;
+  top: 14.5rem;
+  left: 51rem;
   height: 20rem;
   width: 20rem;
+
+  @media (max-width: 768px) {
+    top: 16.2rem;
+    left: 1.2rem;
+    transform: scale(0.4);
+  }
 
 
   :after {

@@ -1,13 +1,12 @@
 import React from 'react'
-import Moment from 'moment'
 
 import {useTime} from "../hooks/useTime";
-import {getHours, getMinutes, getSeconds} from "date-fns";
+import {getDayOfYear, getHours, getMinutes, getSeconds} from "date-fns";
 import {DigitalClock} from "../templates/digitalClock";
 
 export const AbsoluteClock = () => {
     const now = useTime(1000)
-    const days = Moment().dayOfYear()
+    const days = getDayOfYear(now)
     const secondsUntilToday = (days - 1) * 24 * 60 * 60;
     const secondsToday = getSeconds(now) + getMinutes(now) * 60 + getHours(now) * 60 * 60;
     const totalSeconds = secondsUntilToday + secondsToday;
