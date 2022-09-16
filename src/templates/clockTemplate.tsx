@@ -72,4 +72,8 @@ export const TextWrapper = styled(Tilt)`
   border: 1px solid rgba(255, 255, 255, 0.72);
   background: #f7f7f724;
   padding: 6rem;
+
+  @media (max-width: 768px) {
+    padding: 2rem;
+  }
 `;

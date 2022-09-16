@@ -53,11 +53,9 @@ export const HomeView = () => {
 
 
     return (
-        <div className="main-view" id="content">
             <AllClocks>
                 {clocksWithRow}
             </AllClocks>
-        </div>
     )
 }
 

@@ -145,15 +145,6 @@ const TopBar = styled.div`
   }
 `;
 
-const TopLine = styled.hr`
-  border: 0;
-  height: 1px;
-  background: #333;
-  margin-top: -3px;
-  width: 60%;
-  margin-left: 0;
-`;
-
 const BottomLine = styled.hr`
   border: 0;
   height: 1px;
