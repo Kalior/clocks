@@ -1,66 +1,76 @@
 import styled from "@emotion/styled";
 import {css} from "@emotion/react";
+import Tilt from "react-parallax-tilt";
 
-export const ClockWrapper = styled.div<DescriptionProps>`
+export const ClockWrapper = styled.div`
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+
   padding: 2rem;
-  width: 11rem;
-  height: 5rem;
+  width: 60vw;
+  height: fit-content;
   word-break: break-all;
   font-size: 1em;
 
-  border-style: solid;
-  border-width: 2px;
-  border-color: rgba(238, 237, 242, 0.18) rgba(238, 237, 242, 0.34) rgba(238, 237, 242, 0.34);
-  border-radius: 2em;
-  backdrop-filter: blur(0.8rem);
-  background-image: linear-gradient(144deg, rgba(238, 237, 242, 0.3), hsla(0, 0%, 100%, 0) 60%, rgba(0, 0, 0, 0.06));
-  
-  margin-top: 2em;
+  margin-top: 10vh;
+  margin-bottom: 40vh;
   transform-style: preserve-3d;
   animation: transform 300ms;
-  
 
-  &:hover {
-    cursor: pointer;
-    z-index: 2;
-    border-radius: 33px;
-    box-shadow: 7px 7px 14px #51504fa3, -7px -7px 14px #ffffff4f;
-    position: absolute;
-    backdrop-filter: blur(2rem);
-  }
-
-  ${props => props.isExpanded && css`
-    cursor: pointer;
-    z-index: 2;
-    border-radius: 33px;
-    backdrop-filter: blur(2rem);
-    box-shadow: 7px 7px 14px #51504fa3, -7px -7px 14px #ffffff4f;
-    position: absolute;
-
-    height: fit-content;
-    width: 26em;
-    padding: 2em;
-  `}
 `;
 
-export const ClockAttribute = styled.div`
-  //align-self: center;
+export const ClockAttribute = styled(Tilt)`
+  justify-self: end;
+
+  width: fit-content;
+  padding: 2rem;
+
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(2em);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: #f7f7f724;
 `;
 
-export const ClockName = styled.p`
-  color: #737272;
+export const ClockName = styled.h1`
+  color: #000;
   text-align: left;
   margin: 0;
 `;
 
-export interface DescriptionProps {
-    isExpanded: boolean;
-}
-
-export const ClockDescription = styled.div<DescriptionProps>`
+export const ClockDescription = styled.div`
   text-align: left;
   max-width: 50em;
   font-size: 1em;
   margin-top: 1em;
-  display: ${props => props.isExpanded ? "block" : "none"};
+`;
+
+export const GlassSlide = styled.div`
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(0.5px);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  position: relative;
+  height: 14rem;
+  background: #f7f7f724;
+  margin-top: -4.6rem;
+  margin-left: -2rem;
+  width: 14rem;
+`;
+
+export const Line = styled.hr`
+  margin-top: -1.4rem;
+  border: 0;
+  height: 1px;
+  background: #333;
+`;
+
+export const TextWrapper = styled(Tilt)`
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(2em);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: #f7f7f724;
+  padding: 6rem;
 `;

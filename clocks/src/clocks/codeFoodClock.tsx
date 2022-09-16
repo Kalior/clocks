@@ -45,12 +45,10 @@ export const CodeFoodClock = () => {
       tells you exactly that.`;
 
     return (
-        <div className="clock">
             <DigitalClock
                 time={time}
                 name={"Code/Food Clock"}
                 description={description}
             />
-        </div>
     );
 }

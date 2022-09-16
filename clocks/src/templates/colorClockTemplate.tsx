@@ -1,6 +1,7 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styled from "@emotion/styled";
-import {ClockAttribute, ClockDescription, ClockName, ClockWrapper} from "./clockTemplate";
+import {ClockAttribute, ClockDescription, ClockName, Line, TextWrapper} from "./clockTemplate";
+import Tilt from 'react-parallax-tilt';
 
 interface ColorClockTemplateProps {
     name: string;
@@ -9,28 +10,24 @@ interface ColorClockTemplateProps {
 }
 
 export const ColorClockTemplate = (props: ColorClockTemplateProps) => {
-    const [isExpanded, setIsExpanded] = useState(false);
+    return <>
+
+        <ClockAttribute>
+            <ColorClock style={props.clockStyle}/>
+        </ClockAttribute>
 
 
-    return (<ClockWrapper
-            isExpanded={isExpanded}
-            tabIndex={0}
-            onClick={() => setIsExpanded(!isExpanded)}
-            onBlur={() => setIsExpanded(false)}
-        >
+        <TextWrapper>
             <ClockName>
                 {props.name}
             </ClockName>
-            <ClockAttribute>
-                <ColorClock style={props.clockStyle}/>
-            </ClockAttribute>
-            <ClockDescription isExpanded={isExpanded}>
-                <hr/>
+            <ClockDescription>
+                <Line/>
                 {props.description}
             </ClockDescription>
+        </TextWrapper>
+    </>
 
-        </ClockWrapper>
-    )
 };
 
 const ColorClock = styled.div`

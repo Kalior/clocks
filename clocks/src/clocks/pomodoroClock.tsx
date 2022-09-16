@@ -28,7 +28,6 @@ export const PomodoroClock = () => {
       This clock uses the Pomodoro method to display the time. The most significant indicator represents
       the number of Pomodoro cycles since midnight, the second is counting up to 25 and the third to 5,
       mutually exclusive.`
-    return (
-        <DigitalClock time={time} name={name} description={description}/>
-    )
+    return <DigitalClock time={time} name={name} description={description}/>
+
 }

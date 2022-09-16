@@ -2,6 +2,7 @@ import React from 'react'
 import {DigitalClock} from "../templates/digitalClock";
 import {useTime} from "../hooks/useTime";
 import {getHours, getMilliseconds, getMinutes, getSeconds} from "date-fns";
+import {padNumber} from "../padding";
 
 export const InflationClock = () => {
     const now = useTime(10)
@@ -20,9 +21,9 @@ export const InflationClock = () => {
 
     const inflationAdjustedHour = Math.floor(inflationAdjustedMillisecondsSinceMidnight / millisecondsPerHour)
     const minuteRemainder = inflationAdjustedMillisecondsSinceMidnight % millisecondsPerHour
-    const inflationAdjustedMinute = Math.floor(minuteRemainder / millisecondsPerMinute )
+    const inflationAdjustedMinute = padNumber(Math.floor(minuteRemainder / millisecondsPerMinute))
     const secondsRemainder = minuteRemainder % millisecondsPerMinute
-    const inflationAdjustedSeconds = Math.floor(secondsRemainder / 1000)
+    const inflationAdjustedSeconds = padNumber(Math.floor(secondsRemainder / 1000))
 
     const time = `${inflationAdjustedHour}:${inflationAdjustedMinute}:${inflationAdjustedSeconds}`
 
@@ -34,7 +35,6 @@ export const InflationClock = () => {
         We run out of our normal 24-hour day before the clock turns 4, but thankfully the time lizards have added more time so
         there's no need to be worried.
         `
-    return (
-        <DigitalClock time={time} name={name} description={description}/>
-    )
+    return <DigitalClock time={time} name={name} description={description}/>
+
 }

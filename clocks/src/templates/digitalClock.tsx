@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import {ClockAttribute, ClockDescription, ClockName, ClockWrapper} from "./clockTemplate";
+import React from 'react'
+import {ClockAttribute, ClockDescription, ClockName, Line, TextWrapper} from "./clockTemplate";
 import styled from "@emotion/styled";
 
 interface DigitalClockProps {
@@ -9,33 +9,29 @@ interface DigitalClockProps {
 }
 
 export const DigitalClock = (props: DigitalClockProps) => {
-    const [isExpanded, setIsExpanded] = useState(false);
 
     return (
-        <ClockWrapper
-            isExpanded={isExpanded}
-            tabIndex={0}
-            onClick={() => setIsExpanded(!isExpanded)}
-            onBlur={() => setIsExpanded(false)}
-        >
-            <ClockName>
-                {props.name}
-            </ClockName>
+        <>
             <DigitalClockTime>
                 {props.time}
             </DigitalClockTime>
-            <ClockDescription isExpanded={isExpanded}>
-                <hr/>
-                <p>{props.description}</p>
-            </ClockDescription>
-        </ClockWrapper>
+            <TextWrapper>
+                <ClockName>
+                    {props.name}
+                </ClockName>
+                <ClockDescription>
+                    <Line/>
+                    <p>{props.description}</p>
+                </ClockDescription>
+            </TextWrapper>
+        </>
     )
 };
 
 const DigitalClockTime = styled(ClockAttribute)`
   font-size: 1.75rem;
-  margin-top: 1rem;
-  text-align: left;
+  margin-top: 5rem;
 
   word-break: normal;
+
 `;

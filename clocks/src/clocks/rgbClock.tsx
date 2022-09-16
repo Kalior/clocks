@@ -17,7 +17,6 @@ export const RGBClock = () => {
     let description = 'This clock displays the current time as an RGB value where red is the hour, green is the minute and blue is the second. ' +
         'So, in order to read this clock you will have to be fluent in RGB, and be able to appreciate subtle color differences.'
     let name = 'RGB Clock'
-    return (
-        <ColorClockTemplate name={name} description={description} clockStyle={clockStyle}/>
-    )
+    return <ColorClockTemplate name={name} description={description} clockStyle={clockStyle}/>
+
 };

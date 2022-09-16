@@ -27,14 +27,14 @@ export const HashClock = () => {
             securely in a database.`
     const hashElement = <HashElement>{hash}</HashElement>
     return (
-        <div className='clock hash-clock'>
-            <DigitalClock time={hashElement} name={'Hash Clock'} description={description}/>
-        </div>
+        <DigitalClock time={hashElement} name={'Hash Clock'} description={description}/>
     )
 }
 
 const HashElement = styled.div`
-    overflow: hidden;
+  overflow: hidden;
   text-overflow: ellipsis;
-    font-size: 0.75rem;
+  font-size: 0.75rem;
+  max-width: 300px;
+  word-break: break-all;
 `;

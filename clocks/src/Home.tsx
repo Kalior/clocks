@@ -56,7 +56,7 @@ export const HomeView = () => {
 
 
     const updateTopClockKey = (newTopClock: string) => {
-        scroll.scrollToTop();
+        //scroll.scrollToTop();
         navigate('/' + newTopClock, {replace: true})
 
         setTopClock(newTopClock)
@@ -65,14 +65,9 @@ export const HomeView = () => {
 
     const clocksWithRow = Object.keys(clockTypes).map(clockKey => {
         return (
-            <div
-                key={clockKey}
-                onClick={() => updateTopClockKey(clockKey)}
-            >
-                <>
-                    {clockTypes[clockKey]({})}
-                </>
-            </div>
+            <React.Fragment key={clockKey}>
+                {clockTypes[clockKey]({})}
+            </React.Fragment>
         );
     });
 
@@ -90,11 +85,15 @@ export const HomeView = () => {
 
 const AllClocks = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 2fr 4fr;
+  grid-auto-rows: 60vh;
+  align-items: center;
+  column-gap: 2rem;
 
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
+    gap: 6rem;
   }
 `;
 

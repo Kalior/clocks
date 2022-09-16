@@ -4,6 +4,7 @@ import seed from "seed-random"
 import {useTime} from "../hooks/useTime";
 import {getHours, getMinutes, getSeconds} from "date-fns";
 import {DigitalClock} from "../templates/digitalClock";
+import {padNumber} from "../padding";
 
 export const ScrambledClock = () => {
     const now = useTime(1000)
@@ -21,14 +22,10 @@ export const ScrambledClock = () => {
     const randomTime = (currentMinute: number, currentHour: number) => {
         const hour = Math.floor(seededRandom(0, 23, currentMinute, currentHour))
         const minute = Math.floor(seededRandom(0, 59, currentMinute, currentHour))
-        let nextHourStr = hour.toString()
-        if (hour < 10) {
-            nextHourStr = '0' + nextHourStr
-        }
-        let nextMinuteStr = minute.toString()
-        if (minute < 10) {
-            nextMinuteStr = '0' + nextMinuteStr
-        }
+
+        let nextHourStr = padNumber(hour)
+        let nextMinuteStr = padNumber(minute)
+
         setMinuteStr(nextMinuteStr)
         setHourStr(nextHourStr)
     }
@@ -48,10 +45,6 @@ export const ScrambledClock = () => {
     const description = 'This is a clock that randomly takes a number and displays that as the time every minute. However, the random number generator ' +
         "bases it's seed upon the actual minute and hour, which basically can be interpreted as scrambling the time. For instance, every day when the " +
         'clock is 20:28, this clock displays 22:56. In theory, this makes it possible to memorize how to tell time using this clock, which I think is a great use of your time.'
-    return (
-        <div className='random-clock clock'>
-            <DigitalClock time={randTime} name={'Scrambled Clock'} description={description}/>
-        </div>
-    )
+    return <DigitalClock time={randTime} name={'Scrambled Clock'} description={description}/>
 
 }

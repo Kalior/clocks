@@ -1,12 +1,10 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {useTime} from "../hooks/useTime";
 import {getHours, getMinutes, getSeconds} from "date-fns";
-import {ClockDescription, ClockName, ClockWrapper} from "../templates/clockTemplate";
+import {ClockAttribute, ClockDescription, ClockName, Line, TextWrapper} from "../templates/clockTemplate";
 import styled from "@emotion/styled";
 
 export const BarClock = () => {
-    const [isExpanded, setIsExpanded] = useState(false);
-
     const now = useTime(1000)
     let timeSum = getHours(now) + getMinutes(now) + getSeconds(now)
     let hourPercentage = getHours(now) / timeSum * 100
@@ -24,28 +22,26 @@ export const BarClock = () => {
         'have been more than 30 minutes since the hour last struck.'
     let name = 'Bar Clock'
     return (
-        <ClockWrapper
-            isExpanded={isExpanded}
-            tabIndex={0}
-            onClick={() => setIsExpanded(!isExpanded)}
-            onBlur={() => setIsExpanded(false)}
-        >
-            <ClockName>
-                {name}
-            </ClockName>
-            <div >
+        <>
+            <ClockAttribute style={{width: "300px", padding: "1rem"}}>
                 {hourDiv}{minuteDiv}{secondDiv}
-            </div>
-            <ClockDescription isExpanded={isExpanded} >
-                <hr/>
-                {description}
-            </ClockDescription>
-        </ClockWrapper>
+            </ClockAttribute>
+            <TextWrapper>
+                <ClockName>
+                    {name}
+                </ClockName>
+                <ClockDescription>
+                    <Line/>
+                    {description}
+                </ClockDescription>
+            </TextWrapper>
+
+        </>
     )
 };
 
 const BarElement = styled.div`
-  border-radius: 2px;
+  border-radius: 16px;
   box-shadow: inset 0px 0px 12px 4px rgba(0, 0, 0, 0.2);
   display: inline-block;
   background-color: #fff;

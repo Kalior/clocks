@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react'
 import {useTime} from "../hooks/useTime";
 import {getHours, getMilliseconds, getMinutes, getSeconds} from "date-fns";
-import {ClockDescription, ClockName, ClockWrapper} from "../templates/clockTemplate";
+import {ClockAttribute, ClockDescription, ClockName, ClockWrapper, Line, TextWrapper} from "../templates/clockTemplate";
 import styled from "@emotion/styled";
 
 export const SpeedClock = () => {
@@ -75,44 +75,48 @@ export const SpeedClock = () => {
             ctx.stroke()
         }
     }
-    const description = 'This clock is similar to the Bar Clock in that it interprets the digit ' +
-        'at each position of the clock. It does, however, use these digits in a different fashion. ' +
-        'What it does is it moves the object corresponding to the digit number of pixels (times a constant factor) ' +
-        'forward. So, if the object furthest down moves slowly, ' +
-        'the number of seconds this minute is still low. And if that object stops, a minute ' +
+    const description = 'Humans are actually pretty decent at perceiving even slight differences in speed. ' +
+        'Therefore, it makes a lot of sense to present time in a matter where we can use this strength. ' +
+        'Here, each object corresponds to one of the hands of the clock, and has a speed related to its value. ' +
+        'So, if the object furthest down moves slowly, ' +
+        'the number of seconds this minute is low. If that object stops, a minute ' +
         'has gone by and the object above it starts moving faster. Appreciating subtle speed ' +
         'differences is the key to being able to interpret this clock.'
     const name = 'Speed Clock'
 
-    const [height, setHeight] = useState(0)
 
     const canvas = <SpeedCanvas ref={canvasRef} id='speed-canvas' className='speed-clock' height='200' width='900'/>
 
-    return (
-        <ClockWrapper
-            isExpanded={isExpanded}
-            tabIndex={0}
-            onClick={() => setIsExpanded(!isExpanded)}
-            onBlur={() => setIsExpanded(false)}
-        >
-            <ClockName className='clock-name clock-attribute'>
+    return <>
+        {canvas}
+        <TextWrapper>
+            <ClockName>
                 {name}
             </ClockName>
-            <div className='clock-attribute speed-clock-attribute'>
-                {canvas}
-            </div>
-            <ClockDescription isExpanded={isExpanded}>
-                <hr/>
+
+            <ClockDescription>
+                <Line/>
                 {description}
             </ClockDescription>
-        </ClockWrapper>
-    )
+        </TextWrapper>
+    </>
+
 }
 
 const SpeedCanvas = styled.canvas`
   width: 100%;
-  border-radius: 2px;
+  height: fit-content;
+
   display: inline-block;
   background-color: #fff0;
-  height: 5em;
+
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(2em);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: #f7f7f724;
+`;
+
+const SpeedAttribute = styled(ClockAttribute)`
+  padding: 0px;
 `;

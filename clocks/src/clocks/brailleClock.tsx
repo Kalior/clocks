@@ -25,8 +25,7 @@ export const BrailleClock = () => {
       it does so in a way that most people can't read. I wouldn't be surprised if fewer people can read this
       clock than the Roman clock. If you can read this one, good on you!
       Also, isn't it ironic to display braille on a flat screen?`
-    return (
-        <DigitalClock time={time} name={'Braille Clock'} description={description}/>
-    )
+    return <DigitalClock time={time} name={'Braille Clock'} description={description}/>
+
 
 }

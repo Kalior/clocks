@@ -19,8 +19,6 @@ export const FikaClock = () => {
       "15 to 30 minutes and devour a cup of coffee and some cake. This clock, thus, reminds us of this ancient " +
       "tradition and highlights those two imperative hours of the day."
   return (
-      <div className='clock'>
         <DigitalClock time={time} name={'Fika Clock'} description={description}/>
-      </div>
   )
 };

@@ -58,9 +58,5 @@ export const ShuffleClock = () => {
      You might be able to exclude some digits from some positions,
      e.g. the position representing tenths of hours cannot go above '2'.
     `
-    return (
-        <div className='random-clock clock'>
-            <DigitalClock time={randTime} name={'Shuffle Clock'} description={description}/>
-        </div>
-    )
+    return <DigitalClock time={randTime} name={'Shuffle Clock'} description={description}/>
 }

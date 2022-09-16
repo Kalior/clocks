@@ -3,8 +3,7 @@ import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import {HomeView} from "./Home";
 import styled from "@emotion/styled";
 import {keyframes} from "@emotion/react";
-import ios_clock from "./assets/ios_clock.svg"
-
+import {useCallback, useEffect, useState} from "react";
 
 const ClockRoutes = () => (
     <Router>
@@ -15,19 +14,76 @@ const ClockRoutes = () => (
     </Router>
 )
 
-function App() {
-    return <AllContent>
-        <Clock>
 
-            <HourHand/>
+const App = () => {
+    const [y, setY] = useState(window.scrollY);
+    const [color, setColor] = useState("rgba(157, 242, 194, 0.63)")
 
-            <MinuteHand/>
+    const colors = [
+        [182, 237, 171],
+        [48, 197, 189],
+        [215, 161, 109],
+        [238, 201, 131],
+        [95, 182, 217],
+        [157, 182, 110],
+        [255, 215, 241],
+        [153, 179, 145],
+        [214, 255, 242]
+    ];
 
-            <SecondHand/>
-        </Clock>
+
+    const lerp = (v0: number, v1: number, t: number) => {
+        return (1 - t) * v0 + t * v1;
+    }
+
+    const handleNavigation = useCallback(
+        (e: Event) => {
+            const window = e.currentTarget as Window;
+            const y = window.scrollY
+
+            const scrollYLimit = Math.max(document.body.scrollHeight, document.body.offsetHeight,
+                document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
+
+            const scrollPerColor = scrollYLimit / colors.length
+
+            const color_position = y + (window.screen.height / 2)
+
+            const color_i = Math.floor(color_position / scrollPerColor) % colors.length
+            const color_next_i = (color_i + 1) % colors.length
+
+            const interpolation_alpha = (color_position % scrollPerColor) / scrollPerColor
+
+            const red = lerp(colors[color_i][0], colors[color_next_i][0], interpolation_alpha)
+            const green = lerp(colors[color_i][1], colors[color_next_i][1], interpolation_alpha)
+            const blue = lerp(colors[color_i][2], colors[color_next_i][2], interpolation_alpha)
+
+            setColor(`rgba(${red}, ${green}, ${blue}, 0.43)`)
+        }, [y]
+    );
+
+    useEffect(() => {
+        setY(window.scrollY);
+        window.addEventListener("scroll", handleNavigation);
+
+        return () => {
+            window.removeEventListener("scroll", handleNavigation);
+        };
+    }, [handleNavigation]);
+
+    const rotatingClock = <Clock>
+        <HourHand/>
+        <MinuteHand/>
+        <SecondHand/>
+    </Clock>
+
+    return <AllContent color={color}>
+        <PositionClock>
+
+        </PositionClock>
         <TopBar>
             <p>My collection of</p>
             <h2>Stupid Clocks</h2>
+            <br/>
             <p> that either don't tell time or do so in a senseless way</p>
             <TopLine/>
         </TopBar>
@@ -64,7 +120,11 @@ const backgroundPositionAnimation = keyframes`
   }
 `;
 
-const AllContent = styled.div`
+interface AllContentProps {
+    color: string;
+}
+
+const AllContent = styled.div<AllContentProps>`
   display: flex;
   flex-flow: column;
   min-height: 100vh;
@@ -72,6 +132,7 @@ const AllContent = styled.div`
   //background-image: radial-gradient(circle, var(--ring-color) 0%, #fff0 10%, #fff0 50%, var(--ring-color) 100%);
   //background-image: radial-gradient(circle, var(--ring-color) 1%,#fff0 1%, #fff0 30%, var(--ring-color) 30%, var(--ring-color) 35%, #fff0 35%);
   //background-image: radial-gradient(circle, var(--ring-color) 0%, #fff0 10%);
+  background-image: linear-gradient(90deg, ${props => props.color ? props.color : "rgba(153, 217, 163, 0.43)"} 20%, #fff0 100%);
     //animation: ${backgroundPositionAnimation} 60s ease-in infinite;
 `;
 
@@ -80,15 +141,22 @@ const TopBar = styled.div`
   color: #213547;
   padding: 2.4rem;
   font-size: 1.4rem;
+  position: sticky;
+  top: 14rem;
+  transform: rotate(-15deg);
 
   h2 {
     padding-right: 0.02rem;
     padding-left: 0.16rem;
     display: inline;
+    font-size: 10rem;
+    line-height: 8rem;
   }
 
   p {
     display: inline;
+    font-size: 2.4rem;
+
   }
 `;
 
@@ -97,6 +165,8 @@ const TopLine = styled.hr`
   height: 1px;
   background: #333;
   margin-top: -3px;
+  width: 60%;
+  margin-left: 0;
 `;
 
 const BottomLine = styled.hr`
@@ -114,6 +184,8 @@ const Content = styled.div`
 
   min-width: 320px;
   min-height: fit-content;
+
+  margin-top: 10rem;
 `;
 
 const Footer = styled.div`
@@ -134,11 +206,11 @@ const Footer = styled.div`
 
 const Clock = styled.div`
   height: 60vh;
-  position: absolute;
+  position: sticky;
+  top: 20px;
   width: 60rem;
-  margin-top: 20vh;
-  margin-left: 10vw;
-  
+  transform: scale(0.4);
+
 
   :after {
     background: var(--ring-color);
@@ -155,7 +227,9 @@ const Clock = styled.div`
 `;
 
 const RotateAnimation = keyframes`
-  100% {transform: rotateZ(360deg);}
+  100% {
+    transform: rotateZ(360deg);
+  }
 `;
 
 
@@ -167,7 +241,7 @@ const HourHand = styled.div`
   top: -9rem;
   transform-origin: 50% 100%;
   width: 0.4rem;
-  animation: ${RotateAnimation} 4s infinite cubic-bezier(.68,-0.55,.27,1.55);
+  animation: ${RotateAnimation} 40s infinite cubic-bezier(.68, -0.55, .27, 1.55);
 `;
 
 const MinuteHand = styled.div`
@@ -178,7 +252,7 @@ const MinuteHand = styled.div`
   top: -19.5rem;
   transform-origin: 50% 100%;
   width: 0.2rem;
-  animation: ${RotateAnimation} 360s infinite steps(60);
+  animation: ${RotateAnimation} 3600s infinite steps(60);
 `;
 
 const SecondHand = styled.div`
@@ -190,8 +264,14 @@ const SecondHand = styled.div`
   transform-origin: 50% 80%;
   width: 0.1rem;
   z-index: 0;
-  animation: ${RotateAnimation} 6s infinite steps(60);
+  animation: ${RotateAnimation} 60s infinite steps(60);
 `;
 
+const PositionClock = styled.div`
+  position: absolute;
+  margin-top: -9vh;
+  margin-left: 54vw;
+  height: 100%;
+`;
 
 export default App
