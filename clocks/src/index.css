@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@100;400;700&display=swap');
+
 @font-face {
   font-family: "Open Sans";
   font-style: normal;
@@ -5,17 +7,30 @@
   src:url("fonts/Open_Sans/OpenSans-Regular.ttf");
 }
 
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 700;
+  src:url("fonts/Open_Sans/OpenSans-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 100;
+  src:url("fonts/Open_Sans/OpenSans-Light.ttf");
+}
+
+
+
 :root {
-  font-family: "Open Sans", Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", Helvetica, sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
 
-  color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #f6f5f4;
-
-  --mobile-break-point: 768px;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

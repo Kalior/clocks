@@ -71,21 +71,18 @@ const App = () => {
     }, [handleNavigation]);
 
     const rotatingClock = <Clock>
-        <HourHand/>
-        <MinuteHand/>
-        <SecondHand/>
-    </Clock>
+            <HourHand/>
+            <MinuteHand/>
+            <SecondHand/>
+        </Clock>
 
     return <AllContent color={color}>
-        <PositionClock>
 
-        </PositionClock>
+        {rotatingClock}
         <TopBar>
             <p>My collection of</p>
             <h2>Stupid Clocks</h2>
-            <br/>
             <p> that either don't tell time or do so in a senseless way</p>
-            <TopLine/>
         </TopBar>
         <Content>
             <ClockRoutes/>
@@ -102,24 +99,6 @@ const App = () => {
     </AllContent>
 }
 
-const backgroundPositionAnimation = keyframes`
-  0% {
-    background-position: -24vw -10vh;
-  }
-  20% {
-    background-position: -12vw -12vh;
-  }
-  40% {
-    background-position: -20vw 1vh;
-  }
-  60% {
-    background-position: -12vw -4vh;
-  }
-  100% {
-    background-position: -24vw -10vh;
-  }
-`;
-
 interface AllContentProps {
     color: string;
 }
@@ -129,34 +108,42 @@ const AllContent = styled.div<AllContentProps>`
   flex-flow: column;
   min-height: 100vh;
   --ring-color: rgba(54, 28, 64, 0.9);
-  //background-image: radial-gradient(circle, var(--ring-color) 0%, #fff0 10%, #fff0 50%, var(--ring-color) 100%);
-  //background-image: radial-gradient(circle, var(--ring-color) 1%,#fff0 1%, #fff0 30%, var(--ring-color) 30%, var(--ring-color) 35%, #fff0 35%);
-  //background-image: radial-gradient(circle, var(--ring-color) 0%, #fff0 10%);
   background-image: linear-gradient(90deg, ${props => props.color ? props.color : "rgba(153, 217, 163, 0.43)"} 20%, #fff0 100%);
-    //animation: ${backgroundPositionAnimation} 60s ease-in infinite;
 `;
 
 
 const TopBar = styled.div`
   color: #213547;
   padding: 2.4rem;
-  font-size: 1.4rem;
   position: sticky;
   top: 14rem;
-  transform: rotate(-15deg);
+  margin-left: 6rem;
+  //transform: rotate(-15deg);
+
+  @media (max-width: 768px) {
+    margin-left: 1rem;
+  }
 
   h2 {
-    padding-right: 0.02rem;
-    padding-left: 0.16rem;
-    display: inline;
     font-size: 10rem;
     line-height: 8rem;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 400;
+
+    @media (max-width: 768px) {
+      font-size: 5rem;
+      line-height: 4rem;
+    }
   }
 
   p {
-    display: inline;
+    margin: 1rem 0;
     font-size: 2.4rem;
-
+    font-weight: 100;
+    @media (max-width: 768px) {
+      font-size: 1.8rem;
+    }
   }
 `;
 
@@ -173,7 +160,7 @@ const BottomLine = styled.hr`
   border: 0;
   height: 1px;
   background: #333;
-  margin-top: 0px;
+  margin-top: 0;
 `;
 
 const Content = styled.div`
@@ -185,7 +172,7 @@ const Content = styled.div`
   min-width: 320px;
   min-height: fit-content;
 
-  margin-top: 10rem;
+  margin-top: 30vh;
 `;
 
 const Footer = styled.div`
@@ -205,11 +192,11 @@ const Footer = styled.div`
 `;
 
 const Clock = styled.div`
-  height: 60vh;
-  position: sticky;
-  top: 20px;
-  width: 60rem;
-  transform: scale(0.4);
+  position: fixed;
+  top: 18vh;
+  left: 50vw;
+  height: 20rem;
+  width: 20rem;
 
 
   :after {
@@ -218,10 +205,10 @@ const Clock = styled.div`
     content: "";
     position: absolute;
     left: 50%;
-    top: 21rem;
+    top: 50%;
     transform: translate(-50%, -50%);
-    width: 2rem;
-    height: 2rem;
+    width: 1rem;
+    height: 1rem;
     z-index: 0;
   }
 `;
@@ -235,21 +222,21 @@ const RotateAnimation = keyframes`
 
 const HourHand = styled.div`
   background: var(--ring-color);
-  height: 30rem;
-  left: 50%;
+  height: 5rem;
   position: absolute;
-  top: -9rem;
+  left: 50%;
+  top: 5rem;
   transform-origin: 50% 100%;
-  width: 0.4rem;
+  width: 0.3rem;
   animation: ${RotateAnimation} 40s infinite cubic-bezier(.68, -0.55, .27, 1.55);
 `;
 
 const MinuteHand = styled.div`
   background: var(--ring-color);
-  height: 40rem;
-  left: 50%;
+  height: 8rem;
   position: absolute;
-  top: -19.5rem;
+  left: 50%;
+  top: 2rem;
   transform-origin: 50% 100%;
   width: 0.2rem;
   animation: ${RotateAnimation} 3600s infinite steps(60);
@@ -257,21 +244,16 @@ const MinuteHand = styled.div`
 
 const SecondHand = styled.div`
   background: var(--ring-color);
-  height: 45rem;
-  left: 50%;
+  height: 10rem;
   position: absolute;
-  top: -15.5rem;
-  transform-origin: 50% 80%;
+  left: 50%;
+  top: 0;
+  transform-origin: 50% 100%;
   width: 0.1rem;
   z-index: 0;
   animation: ${RotateAnimation} 60s infinite steps(60);
 `;
 
-const PositionClock = styled.div`
-  position: absolute;
-  margin-top: -9vh;
-  margin-left: 54vw;
-  height: 100%;
-`;
+
 
 export default App
