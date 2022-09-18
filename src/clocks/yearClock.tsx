@@ -3,6 +3,8 @@ import {useTime} from "../hooks/useTime";
 import {getDayOfYear} from "date-fns";
 import {ClockDescription, ClockName, Line, TextWrapper} from "../templates/clockTemplate";
 import styled from "@emotion/styled";
+import clockSVG from "../assets/clock.svg"
+import clockPNG from "../assets/year-clock-no-ring.png"
 
 export const YearClock = () => {
     const now = useTime(1000000)
@@ -24,8 +26,8 @@ export const YearClock = () => {
 
         ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-        let drawing = new Image()
-        drawing.src = 'year-clock-no-ring.png'
+        let drawing = new Image(200,200)
+        drawing.src = clockPNG
         let r = (canvas.width / 2) - 5
         let degree = (-3.14 * 0.5) + (3.14 / 6) + ((days / 365) * 3.14 * 2)
         ctx.lineWidth = 3

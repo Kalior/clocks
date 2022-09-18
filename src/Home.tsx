@@ -23,19 +23,19 @@ import {ColorClock} from "./clocks/ColorClock";
 
 export const HomeView = () => {
     const clockTypes: Record<string, React.FunctionComponent> = {
+        RGBClock,
+        PrimeClock,
+        SpeedClock,
+        ShuffleClock,
+        HashClock,
         AbsoluteClock,
         HSLClock,
         BarClock,
         BrailleClock,
         FikaClock,
-        HashClock,
         MetricClock,
         PomodoroClock,
-        PrimeClock,
-        RGBClock,
         ScrambledClock,
-        ShuffleClock,
-        SpeedClock,
         WrongOrderClock,
         YearClock,
         CodeFoodClock,
@@ -53,9 +53,9 @@ export const HomeView = () => {
 
 
     return (
-            <AllClocks>
-                {clocksWithRow}
-            </AllClocks>
+        <AllClocks>
+            {clocksWithRow}
+        </AllClocks>
     )
 }
 
@@ -69,7 +69,11 @@ const AllClocks = styled.div`
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
-    gap: 6rem;
+    gap: 1rem;
+
+    & > :nth-child(odd) {
+      margin-top: 6rem;
+    }
   }
 `;
 

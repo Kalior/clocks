@@ -30,7 +30,6 @@ export const DigitalClock = (props: DigitalClockProps) => {
 
 const DigitalClockTime = styled(ClockAttribute)`
   font-size: 1.75rem;
-  margin-top: 5rem;
 
   word-break: normal;
 

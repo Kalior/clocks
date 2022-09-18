@@ -16,10 +16,12 @@ const ClockRoutes = () => (
 
 
 const App = () => {
+    const [onContent, setOnContent] = useState(false);
     const [y, setY] = useState(window.scrollY);
-    const [color, setColor] = useState("rgba(157, 242, 194, 0.63)")
+    const [color, setColor] = useState("rgba(211, 236, 206, 0.43)")
 
     const colors = [
+        [236, 236, 236],
         [182, 237, 171],
         [48, 197, 189],
         [215, 161, 109],
@@ -40,6 +42,9 @@ const App = () => {
         (e: Event) => {
             const window = e.currentTarget as Window;
             const y = window.scrollY
+
+            setOnContent(y > 460);
+            console.log(y)
 
             const scrollYLimit = Math.max(document.body.scrollHeight, document.body.offsetHeight,
                 document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
@@ -70,16 +75,16 @@ const App = () => {
         };
     }, [handleNavigation]);
 
-    const rotatingClock = <Clock>
-            <HourHand/>
-            <MinuteHand/>
-            <SecondHand/>
-        </Clock>
+    const rotatingClock = <Clock withShadow={onContent}>
+        <HourHand withShadow={onContent}/>
+        <MinuteHand withShadow={onContent}/>
+        <SecondHand withShadow={onContent}/>
+    </Clock>
 
     return <AllContent color={color}>
 
         {rotatingClock}
-        <TopBar>
+        <TopBar withShadow={onContent}>
             <p>My collection of</p>
             <h2>Stupid Clocks</h2>
             <p> that either don't tell time or do so in a senseless way</p>
@@ -110,13 +115,24 @@ const AllContent = styled.div<AllContentProps>`
   background-image: linear-gradient(90deg, ${props => props.color ? props.color : "rgba(153, 217, 163, 0.43)"} 20%, #fff0 100%);
 `;
 
+interface ShadowProps {
+    withShadow: boolean;
+}
 
-const TopBar = styled.div`
-  color: #213547;
+const TopBar = styled.div<ShadowProps>`
   padding: 2.4rem;
   position: sticky;
   top: 14rem;
   margin-left: 6rem;
+  z-index: 0;
+
+  ${props => props.withShadow ? "text-shadow: -1px 0 5px #213547;" : ""}
+  color: ${props => props.withShadow ? "transparent" : "#213547"};
+
+  ${props => props.withShadow ? "transform: scale(0.98);" : ""}
+
+  transition: all 2s;
+
 
   @media (max-width: 768px) {
     margin-left: 1rem;
@@ -128,6 +144,7 @@ const TopBar = styled.div`
     margin: 0;
     text-transform: uppercase;
     font-weight: 400;
+    font-family: Montserrat, serif;
 
     @media (max-width: 768px) {
       font-size: 5rem;
@@ -180,16 +197,22 @@ const Footer = styled.div`
   }
 `;
 
-const Clock = styled.div`
+const Clock = styled.div<ShadowProps>`
   position: fixed;
-  top: 14.5rem;
-  left: 51rem;
+  top: 14rem;
+  left: 56rem;
   height: 20rem;
   width: 20rem;
+  z-index: 1;
+
+  @media (max-width: 1487px) {
+    top: 22rem;
+    left: 15.5rem;
+  }
 
   @media (max-width: 768px) {
-    top: 16.2rem;
-    left: 1.2rem;
+    top: 16rem;
+    left: 2rem;
     transform: scale(0.4);
   }
 
@@ -205,6 +228,9 @@ const Clock = styled.div`
     width: 1rem;
     height: 1rem;
     z-index: 0;
+
+    ${props => props.withShadow ? "box-shadow: -1px 0 3px #ac4d4d78; background: rgba(168, 77, 103, 0.54);" : ""};
+    transition: all 500ms;
   }
 `;
 
@@ -215,7 +241,7 @@ const RotateAnimation = keyframes`
 `;
 
 
-const HourHand = styled.div`
+const HourHand = styled.div<ShadowProps>`
   background: var(--ring-color);
   height: 5rem;
   position: absolute;
@@ -224,9 +250,12 @@ const HourHand = styled.div`
   transform-origin: 50% 100%;
   width: 0.3rem;
   animation: ${RotateAnimation} 40s infinite cubic-bezier(.68, -0.55, .27, 1.55);
+
+  ${props => props.withShadow ? "box-shadow: -1px 0 3px #ac4d4d78; background: rgba(168, 77, 103, 0.54);" : ""};
+  transition: all 500ms;
 `;
 
-const MinuteHand = styled.div`
+const MinuteHand = styled.div<ShadowProps>`
   background: var(--ring-color);
   height: 8rem;
   position: absolute;
@@ -234,10 +263,13 @@ const MinuteHand = styled.div`
   top: 2rem;
   transform-origin: 50% 100%;
   width: 0.2rem;
-  animation: ${RotateAnimation} 3600s infinite steps(60);
+  animation: ${RotateAnimation} 100s infinite steps(6);
+
+  ${props => props.withShadow ? "box-shadow: -1px 0 3px #ac4d4d78;  background: rgba(168, 77, 103, 0.54);" : ""};
+  transition: all 500ms;
 `;
 
-const SecondHand = styled.div`
+const SecondHand = styled.div<ShadowProps>`
   background: var(--ring-color);
   height: 10rem;
   position: absolute;
@@ -247,8 +279,10 @@ const SecondHand = styled.div`
   width: 0.1rem;
   z-index: 0;
   animation: ${RotateAnimation} 60s infinite steps(60);
-`;
 
+  ${props => props.withShadow ? "box-shadow: -1px 0 3px #ac4d4d78;  background: rgba(168, 77, 103, 0.54);" : ""};
+  transition: all 500ms;
+`;
 
 
 export default App

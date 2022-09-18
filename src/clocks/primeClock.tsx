@@ -14,9 +14,9 @@ export const PrimeClock = () => {
     const currentMinute = getMinutes(now)
     const currentHour = getHours(now)
 
-    let secondText = _.includes(primes, currentSecond) ? padNumber(currentSecond) : ''
-    let minuteText = _.includes(primes, currentMinute) ? padNumber(currentMinute) : ''
-    let hourText = _.includes(primes, currentHour) ? padNumber(currentHour) : ''
+    let secondText = _.includes(primes, currentSecond) ? padNumber(currentSecond) : '  '
+    let minuteText = _.includes(primes, currentMinute) ? padNumber(currentMinute) : '  '
+    let hourText = _.includes(primes, currentHour) ? padNumber(currentHour) : '  '
 
     let metricTime = <div style={{width: "111px"}}>{hourText + ':' + minuteText + ':' + secondText}</div>
     let description = 'As a student of Computer Science and Engineering, I have understood the importance of ' +

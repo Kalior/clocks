@@ -19,7 +19,7 @@ export const ClockWrapper = styled.div`
 
 `;
 
-export const ClockAttribute = styled(Tilt)`
+export const ClockAttribute = styled.div`
   justify-self: end;
 
   width: fit-content;
@@ -30,6 +30,7 @@ export const ClockAttribute = styled(Tilt)`
   backdrop-filter: blur(2em);
   border: 1px solid rgba(255, 255, 255, 0.72);
   background: #f7f7f724;
+  z-index: 1;
 `;
 
 export const ClockName = styled.h1`
@@ -65,13 +66,14 @@ export const Line = styled.hr`
   background: #333;
 `;
 
-export const TextWrapper = styled(Tilt)`
+export const TextWrapper = styled.div`
   background: rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   backdrop-filter: blur(2em);
   border: 1px solid rgba(255, 255, 255, 0.72);
   background: #f7f7f724;
   padding: 6rem;
+  z-index: 1;
 
   @media (max-width: 768px) {
     padding: 2rem;

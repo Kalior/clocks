@@ -44,11 +44,11 @@ export const SpeedClock = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         ctx.fillStyle = '#444'
         // Hour
-        drawRoundRect(ctx, hourX - objectWidth, 0, objectWidth, objectHeight, 5, true, true)
+        drawRoundRect(ctx, hourX - objectWidth, 0, objectWidth, objectHeight, 16, true, true)
         // Minute
-        drawRoundRect(ctx, minuteX - objectWidth, objectHeight + objectMargin, objectWidth, objectHeight, 5, true, true)
+        drawRoundRect(ctx, minuteX - objectWidth, objectHeight + objectMargin, objectWidth, objectHeight, 16, true, true)
         // Second
-        drawRoundRect(ctx, secondX - objectWidth, (objectHeight + objectMargin) * 2, objectWidth, objectHeight, 5, true, true)
+        drawRoundRect(ctx, secondX - objectWidth, (objectHeight + objectMargin) * 2, objectWidth, objectHeight, 16, true, true)
 
         setPrevHourX(hourX)
         setPrevMinuteX(minuteX)
@@ -104,7 +104,9 @@ export const SpeedClock = () => {
 }
 
 const SpeedCanvas = styled.canvas`
-  width: 100%;
+  justify-self: end;
+
+  width: 20rem;
   height: fit-content;
 
   display: inline-block;
@@ -115,6 +117,7 @@ const SpeedCanvas = styled.canvas`
   backdrop-filter: blur(2em);
   border: 1px solid rgba(255, 255, 255, 0.72);
   background: #f7f7f724;
+  z-index: 2;
 `;
 
 const SpeedAttribute = styled(ClockAttribute)`
