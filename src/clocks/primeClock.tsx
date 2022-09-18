@@ -14,14 +14,13 @@ export const PrimeClock = () => {
     const currentMinute = getMinutes(now)
     const currentHour = getHours(now)
 
-    let secondText = _.includes(primes, currentSecond) ? padNumber(currentSecond) : '  '
-    let minuteText = _.includes(primes, currentMinute) ? padNumber(currentMinute) : '  '
-    let hourText = _.includes(primes, currentHour) ? padNumber(currentHour) : '  '
+    const secondText = _.includes(primes, currentSecond) ? padNumber(currentSecond) : '  '
+    const minuteText = _.includes(primes, currentMinute) ? padNumber(currentMinute) : '  '
+    const hourText = _.includes(primes, currentHour) ? padNumber(currentHour) : '  '
 
-    let metricTime = <div style={{width: "111px"}}>{hourText + ':' + minuteText + ':' + secondText}</div>
-    let description = 'As a student of Computer Science and Engineering, I have understood the importance of ' +
-        'prime numbers in the world. So what this clock does, is it highlights the unsung use of prime numbers, namely ' +
-        'in the clocks we view everyday. Simply put, the clock only displays the digit if it is prime, resulting ' +
-        'in a clock that stands above all other clock in its beauty.'
+    const metricTime = <div style={{width: "111px"}}>{hourText + ':' + minuteText + ':' + secondText}</div>
+    const description = 'As we all know, the prime numbers are basically gods and demand our worship. Therefore,' +
+        ' this clock highlights one place where prime numbers appear to shine some light on our days. This clock ' +
+        'only displays the digit if it is prime, resulting in a clock that stands above all other clocks in its beauty.'
     return <DigitalClock time={metricTime} name={'Prime Clock'} description={description}/>
 }

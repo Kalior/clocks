@@ -19,10 +19,12 @@ import {YearClock} from "./clocks/yearClock";
 import {CodeFoodClock} from "./clocks/codeFoodClock";
 import {InflationClock} from "./clocks/InflationClock";
 import {ColorClock} from "./clocks/ColorClock";
+import {RomanClock} from "./clocks/romanClock";
 
 
 export const HomeView = () => {
     const clockTypes: Record<string, React.FunctionComponent> = {
+        RomanClock,
         RGBClock,
         PrimeClock,
         SpeedClock,
@@ -71,7 +73,7 @@ const AllClocks = styled.div`
     flex-direction: column;
     gap: 1rem;
 
-    & > :nth-child(odd) {
+    & > :nth-of-type(odd) {
       margin-top: 6rem;
     }
   }

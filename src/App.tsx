@@ -44,7 +44,6 @@ const App = () => {
             const y = window.scrollY
 
             setOnContent(y > 460);
-            console.log(y)
 
             const scrollYLimit = Math.max(document.body.scrollHeight, document.body.offsetHeight,
                 document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
