@@ -24,8 +24,8 @@ import {RomanClock} from "./clocks/romanClock";
 
 export const HomeView = () => {
     const clockTypes: Record<string, React.FunctionComponent> = {
-        RomanClock,
         RGBClock,
+        RomanClock,
         PrimeClock,
         SpeedClock,
         ShuffleClock,
@@ -73,7 +73,7 @@ const AllClocks = styled.div`
     flex-direction: column;
     gap: 1rem;
 
-    & > :nth-of-type(odd) {
+    & > :nth-child(odd) {
       margin-top: 6rem;
     }
   }

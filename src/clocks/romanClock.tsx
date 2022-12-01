@@ -41,11 +41,7 @@ export const RomanClock = () => {
 
     let romanTime = <RomanDiv>{romanHours + ':' + romanMinutes + ':' + romanSeconds}</RomanDiv>
 
-    let description = `Since everyone knows how to read roman numerals, this clock displays the current time
-       in those. A quick refresher for those who don't remember the corresponding numbers: L=50, X=10, V=5, I=1.
-       The numbers can be combined by adding a smaller number before a larger number, which corresponds to minus
-       (XL = 50 - 10 = 40), or as a smaller number after a larger number, which means plus (LX = 50 + 10 = 60).
-       Note that the romans didn't have the number 0, so when the clock is 0, that position is empty.`
+    let description = `Roman numerals are by far the most convenient format for a clock. Carpe diem, ante meridiem, and post meridiem.`
     return <DigitalClock time={romanTime} name={'Roman Clock'} description={description}/>
 
 };
